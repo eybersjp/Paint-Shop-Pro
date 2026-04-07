@@ -3,19 +3,12 @@
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>Visualizer | Earthbound Studio (Pure Gemini Engine)</title>
+    <title>Visualizer | Earthbound Studio (Gemini Geometry Engine)</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-    <!-- SDKs -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script type="importmap">
-    {
-      "imports": {
-        "@google/generative-ai": "https://esm.run/@google/generative-ai"
-      }
-    }
-    </script>
+    <script type="importmap"> { "imports": { "@google/generative-ai": "https://esm.run/@google/generative-ai" } } </script>
     <script id="tailwind-config">
           tailwind.config = {
             darkMode: "class",
@@ -35,7 +28,8 @@
         .custom-scrollbar::-webkit-scrollbar-thumb { background: #dac1b8; border-radius: 10px; }
         
         @keyframes scan { 0% { top: 0%; } 100% { top: 100%; } }
-        .ai-scanner { position: absolute; left: 0; right: 0; height: 3px; background: #8e2f19; box-shadow: 0 0 25px #8e2f19; animation: scan 3s ease-in-out infinite; z-index: 50; pointer-events: none; }
+        .ai-scanner { position: absolute; left: 0; right: 0; height: 4px; background: #8e2f19; box-shadow: 0 0 35px #8e2f19; animation: scan 2s ease-in-out infinite; z-index: 50; pointer-events: none; }
+        .canvas-shadow { shadow-[0_80px_160px_-40px_rgba(0,0,0,0.8)]; }
     </style>
 </head>
 <body class="bg-[#fbf9f6] text-[#1b1c1a] font-body antialiased overflow-hidden">
@@ -43,98 +37,77 @@
 <header class="bg-white/80 backdrop-blur-md fixed top-0 w-full z-50 shadow-sm border-b border-stone-100 font-['Space_Grotesk']">
     <div class="flex justify-between items-center px-8 py-4 max-w-full mx-auto">
         <div class="text-2xl font-bold text-orange-900 tracking-tight cursor-pointer" onclick="window.location.href='index.html'">Earthbound Studio</div>
-        <nav class="hidden md:flex items-center gap-8 tracking-tight font-medium">
-            <a class="text-stone-600 hover:text-stone-900 transition-colors" href="shop.html">Shop</a>
-            <a class="text-orange-800 border-b-2 border-orange-800 pb-1 px-2" href="visualizer.html">Visualizer</a>
-            <a class="text-stone-600 hover:text-stone-900 transition-colors" href="collection.html">Collections</a>
-        </nav>
         <div class="flex items-center gap-4">
-            <div id="ai-status" class="flex items-center gap-2 px-4 py-2 bg-emerald-50 text-emerald-800 rounded-full text-[10px] font-bold">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                GEMINI LINK ESTABLISHED
+            <div id="ai-status" class="flex items-center gap-2 px-6 py-2.5 bg-stone-100 text-stone-900 rounded-full text-[11px] font-bold tracking-widest uppercase">
+                <span class="w-2 h-2 rounded-full bg-stone-300"></span>
+                Gemini Geometry Engine
             </div>
         </div>
     </div>
 </header>
 
 <main class="pt-16 min-h-screen flex flex-col lg:flex-row">
-    <!-- Clean Interactive Sidebar -->
-    <aside class="w-full lg:w-[420px] bg-white border-r border-stone-200 p-10 flex flex-col gap-10 h-[calc(100vh-64px)] sticky top-16 z-40 overflow-y-auto custom-scrollbar">
+    <aside class="w-full lg:w-[420px] bg-white border-r border-stone-200 p-12 flex flex-col gap-12 h-[calc(100vh-64px)] sticky top-16 z-40 overflow-y-auto custom-scrollbar">
         <div>
-            <h1 class="font-headline text-4xl font-bold tracking-tight mb-2">Design Space</h1>
-            <p class="text-stone-400 text-xs tracking-tight italic">Automated Vision Orchestrated by Gemini AI.</p>
+            <h1 class="font-headline text-5xl font-bold tracking-tighter mb-2 italic">Vision Lab</h1>
+            <p class="text-stone-400 text-xs tracking-tight">Spatial Analysis by Gemini 1.5 Pro.</p>
         </div>
 
-        <div id="upload-trigger" class="group border-2 border-dashed border-stone-100 rounded-[3rem] p-12 bg-stone-50 hover:bg-white transition-all cursor-pointer text-center relative overflow-hidden ring-offset-4 ring-orange-900/5 hover:ring-2">
-            <span class="material-symbols-outlined text-orange-900 text-5xl mb-3">add_a_photo</span>
-            <p class="font-bold text-base">Select Your Room</p>
-            <p class="text-[10px] text-stone-400 mt-1 uppercase tracking-widest leading-none">High-Fidelity Model</p>
+        <div id="upload-trigger" class="group border-2 border-dashed border-stone-100 rounded-[3.5rem] p-16 bg-stone-50 hover:bg-white transition-all cursor-pointer text-center relative overflow-hidden">
+            <span class="material-symbols-outlined text-orange-900 text-6xl mb-4">architecture</span>
+            <p class="font-bold text-lg">Input Scene</p>
+            <p class="text-[10px] text-stone-400 mt-1 uppercase tracking-widest">Architectural Context</p>
         </div>
 
-        <div class="space-y-8 pt-6 border-t">
-            <div class="flex justify-between items-center"><h3 class="font-bold text-xs uppercase tracking-widest text-stone-500">Pick Pigment</h3><div id="active-swatch" class="w-8 h-8 rounded-xl shadow-lg border border-stone-100" style="background-color: #000080;"></div></div>
-            <div class="grid grid-cols-4 gap-3" id="swatch-container">
-                <button class="swatch w-full aspect-square rounded-2xl shadow-sm border border-stone-100 swatch-active" data-color="#000080" data-name="Midnight Navy" style="background-color: #000080;"></button>
-                <button class="swatch w-full aspect-square rounded-2xl shadow-sm border border-stone-100" data-color="#a23e26" data-name="Zambezi Ochre" style="background-color: #a23e26;"></button>
-                <button class="swatch w-full aspect-square rounded-2xl shadow-sm border border-stone-100" data-color="#54433c" data-name="Great Zimbabwe Grey" style="background-color: #54433c;"></button>
-                <button class="swatch w-full aspect-square rounded-2xl shadow-sm border border-stone-100" data-color="#3a6753" data-name="Bvumba Green" style="background-color: #3a6753;"></button>
-            </div>
-            
-            <div id="selection-status" class="bg-stone-50 p-7 rounded-[2.5rem] border border-stone-100 text-center space-y-2">
-                <p class="text-[10px] uppercase font-bold tracking-[0.3em] text-stone-400">Target Pigment</p>
-                <p id="c-name" class="font-bold text-lg text-stone-900 leading-none">Midnight Navy</p>
-                <p id="c-hex" class="text-[10px] font-mono text-stone-400 uppercase tracking-tighter">#000080</p>
+        <div class="space-y-10 pt-8 border-t">
+            <div class="flex justify-between items-center"><h3 class="font-bold text-xs uppercase tracking-widest text-stone-500">Pick Pigment</h3><div id="active-swatch" class="w-10 h-10 rounded-2xl shadow-xl border border-stone-100" style="background-color: #000080;"></div></div>
+            <div class="grid grid-cols-4 gap-4">
+                <button class="swatch w-full aspect-square rounded-3xl shadow-sm border border-stone-100 swatch-active" data-color="#000080" data-name="Midnight Navy" style="background-color: #000080;"></button>
+                <button class="swatch w-full aspect-square rounded-3xl shadow-sm border border-stone-100" data-color="#a23e26" data-name="Zambezi Ochre" style="background-color: #a23e26;"></button>
+                <button class="swatch w-full aspect-square rounded-3xl shadow-sm border border-stone-100" data-color="#54433c" data-name="Great Zimbabwe Grey" style="background-color: #54433c;"></button>
+                <button class="swatch w-full aspect-square rounded-3xl shadow-sm border border-stone-100" data-color="#3a6753" data-name="Bvumba Green" style="background-color: #3a6753;"></button>
             </div>
         </div>
 
-        <button id="generate-btn" class="mt-auto w-full py-6 bg-stone-900 text-white rounded-[2.5rem] font-bold text-[11px] uppercase tracking-[0.4em] shadow-2xl hover:bg-orange-900 active:scale-95 transition-all flex items-center justify-center gap-4">
-            Invoke Gemini Render <span class="material-symbols-outlined text-lg">auto_awesome</span>
+        <button id="generate-btn" class="mt-auto w-full py-7 bg-stone-900 text-white rounded-[3rem] font-bold text-[12px] uppercase tracking-[0.5em] shadow-2xl hover:bg-orange-900 active:scale-95 transition-all flex items-center justify-center gap-4">
+            Invoke Design Reasoning <span class="material-symbols-outlined text-xl">auto_awesome</span>
         </button>
     </aside>
 
-    <!-- Workspace -->
-    <section class="flex-1 bg-stone-900 relative overflow-hidden">
-        <div id="visualizer-boundary" class="w-full h-full flex items-center justify-center">
-            <div id="canvas-container" class="relative w-full h-full bg-stone-900 flex items-center justify-center">
-                
-                <!-- Onboarding -->
-                <div id="landing-hud" class="absolute inset-0 z-40 bg-stone-100/10 backdrop-blur-3xl flex items-center justify-center cursor-pointer group transition-all duration-1000">
-                    <div class="relative bg-white p-24 rounded-[6rem] shadow-2xl border border-white flex flex-col items-center text-center gap-12 transform transition-all group-hover:scale-[1.01]" onclick="document.getElementById('hidden-upload').click()">
-                        <div class="w-32 h-32 rounded-full bg-orange-900 flex items-center justify-center shadow-2xl ring-12 ring-white/5 animate-pulse"><span class="material-symbols-outlined text-6xl text-white">neurology</span></div>
-                        <div class="space-y-4">
-                            <h2 class="font-headline text-7xl font-bold text-stone-900 tracking-tight leading-[0.8] mb-4">Gemini Vision</h2>
-                            <p class="text-stone-500 text-xl max-w-[450px] leading-relaxed italic">Upload your high-resolution imagery and let Gemini 1.5 Pro orchestrate the architectural transformation.</p>
-                        </div>
-                        <button class="bg-orange-900 text-white px-20 py-7 rounded-full font-bold uppercase tracking-[0.5em] text-[12px] hover:shadow-orange-900/50 transition-all flex items-center gap-4">Initialize Studio <span class="material-symbols-outlined text-lg">flight_takeoff</span></button>
-                    </div>
+    <section class="flex-1 bg-stone-950 relative overflow-hidden flex items-center justify-center p-20">
+        <!-- Landing UI -->
+        <div id="landing-hud" class="absolute inset-0 z-40 bg-white/5 backdrop-blur-3xl flex items-center justify-center cursor-pointer group transition-all duration-1000">
+            <div class="relative bg-white p-24 rounded-[7rem] shadow-2xl flex flex-col items-center text-center gap-14" onclick="document.getElementById('hidden-upload').click()">
+                <div class="w-40 h-40 rounded-full bg-stone-900 flex items-center justify-center shadow-3xl animate-pulse"><span class="material-symbols-outlined text-7xl text-white">neurology</span></div>
+                <div class="space-y-6">
+                    <h2 class="font-headline text-8xl font-bold text-stone-900 tracking-tighter leading-none italic">Gemini Pure</h2>
+                    <p class="text-stone-500 text-2xl max-w-[550px] leading-relaxed">No manual fill. Pure spatial reasoning. Gemini 1.5 maps and paints your vision instantly.</p>
                 </div>
+                <button class="bg-orange-900 text-white px-24 py-8 rounded-full font-bold uppercase tracking-[0.6em] text-[13px] hover:shadow-orange-900/50 transition-all flex items-center gap-6">Initialize Architecture <span class="material-symbols-outlined text-2xl">architecture</span></button>
+            </div>
+        </div>
 
-                <!-- AI Processing -->
-                <div id="loader-hud" class="hidden absolute inset-0 z-50 bg-stone-900/95 backdrop-blur-3xl flex flex-col items-center justify-center gap-10">
-                    <div class="ai-scanner"></div>
-                    <div class="relative w-32 h-32 flex items-center justify-center">
-                        <div class="absolute inset-0 border-[6px] border-stone-800 rounded-full"></div>
-                        <div class="absolute inset-0 border-[6px] border-t-orange-900 rounded-full animate-spin"></div>
-                        <span class="material-symbols-outlined text-orange-900 text-5xl">neurology</span>
-                    </div>
-                    <div class="text-center space-y-4">
-                        <p class="font-headline font-bold text-4xl tracking-tight text-white">Gemini is Generating...</p>
-                        <p class="text-[12px] text-stone-500 font-bold uppercase tracking-[0.5em] animate-pulse">Running Inpainting Reasoning Pass</p>
-                    </div>
-                </div>
+        <!-- AI Scan UI -->
+        <div id="loader-hud" class="hidden absolute inset-0 z-50 bg-stone-950/95 backdrop-blur-3xl flex flex-col items-center justify-center gap-14">
+            <div class="ai-scanner"></div>
+            <div class="relative w-40 h-40 flex items-center justify-center">
+                <div class="absolute inset-0 border-[8px] border-stone-900 rounded-full"></div>
+                <div class="absolute inset-0 border-[8px] border-t-orange-900 rounded-full animate-spin"></div>
+                <span class="material-symbols-outlined text-orange-900 text-6xl">neurology</span>
+            </div>
+            <div class="text-center space-y-6">
+                <p class="font-headline font-bold text-5xl tracking-tighter text-white">Spatial Geometry Analysis</p>
+                <p class="text-[13px] text-stone-500 font-bold uppercase tracking-[0.6em] animate-pulse">Gemini 1.5 Pro is Mapping the Wall...</p>
+            </div>
+        </div>
 
-                <div id="result-container" class="w-full h-full flex items-center justify-center p-16">
-                    <img id="final-result" class="max-w-full max-h-full shadow-[0_80px_160px_-40px_rgba(0,0,0,0.8)] rounded-[2.5rem] opacity-0 transition-opacity duration-1000"/>
-                </div>
-                
-                <input type="file" id="hidden-upload" class="hidden" accept="image/*">
-                <canvas id="hidden-canvas" class="hidden"></canvas>
-
-                <!-- Save Action -->
-                <div id="export-hud" class="hidden absolute bottom-12 left-1/2 -translate-x-1/2 flex items-center gap-5 bg-white/5 backdrop-blur-3xl p-4 rounded-full border border-white/10 shadow-2xl">
-                    <button id="reset-btn" class="w-16 h-16 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-stone-50 transition-all text-stone-500" title="Wipe Session"><span class="material-symbols-outlined text-xl">refresh</span></button>
-                    <button id="export-btn" class="px-16 py-6 bg-white text-stone-900 rounded-full shadow-2xl font-bold text-[12px] uppercase tracking-[0.4em] hover:brightness-110 flex items-center gap-4 transition-all">Save Design <span class="material-symbols-outlined text-lg">auto_awesome</span></button>
-                </div>
+        <div class="relative w-full h-full flex items-center justify-center">
+            <canvas id="main-canvas" class="max-w-full max-h-full opacity-0 transition-opacity duration-1000 shadow-[0_100px_200px_-50px_rgba(0,0,0,1)] rounded-[3rem] cursor-crosshair"></canvas>
+            <input type="file" id="hidden-upload" class="hidden" accept="image/*">
+            
+            <div id="export-hud" class="hidden absolute bottom-12 left-1/2 -translate-x-1/2 flex items-center gap-6 bg-white/5 backdrop-blur-3xl p-5 rounded-full border border-white/10 shadow-3xl">
+                <button id="reset-btn" class="w-20 h-20 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-stone-50 transition-all text-stone-500" title="Wipe Studio"><span class="material-symbols-outlined text-2xl">refresh</span></button>
+                <button id="export-btn" class="px-20 py-8 bg-white text-stone-950 rounded-full shadow-2xl font-bold text-[13px] uppercase tracking-[0.5em] transition-all">Save Design <span class="material-symbols-outlined text-2xl">auto_awesome</span></button>
             </div>
         </div>
     </section>
@@ -146,11 +119,12 @@
     const SUPABASE_URL = "https://jemjmdpvomorpezcouhj.supabase.co";
     const SUPABASE_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImplbWptZHB2b21vcnBlemNvdWhqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU0NzEyMDIsImV4cCI6MjA5MTA0NzIwMn0.LPC0AJm6gbREFlkIMmUa22Oa-rONydEZdMULFflzCoI";
 
-    class MasterGeminiVisualizer {
+    class GeminiGeometryVisualizer {
         constructor() {
+            this.canvas = document.getElementById('main-canvas');
+            this.ctx = this.canvas.getContext('2d', { willReadFrequently: true });
             this.img = null;
             this.activeColor = '#000080';
-            this.activeColorName = 'Midnight Navy';
             this.apiKey = null;
             this.supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
             this.init();
@@ -158,52 +132,28 @@
 
         async init() {
             this.fetchApiKey();
+            document.getElementById('hidden-upload').onchange = (e) => this.handleUpload(e);
+            document.getElementById('generate-btn').onclick = () => this.executeGeminiGeometry();
             
-            const upTrigger = document.getElementById('upload-trigger');
-            const hiddenUp = document.getElementById('hidden-upload');
-            const genBtn = document.getElementById('generate-btn');
-
-            upTrigger.onclick = () => hiddenUp.click();
-            hiddenUp.onchange = (e) => this.handleUpload(e);
-            
-            genBtn.onclick = () => this.generate();
-
             document.querySelectorAll('.swatch').forEach(sw => {
                 sw.onclick = () => {
                     this.activeColor = sw.dataset.color;
-                    this.activeColorName = sw.dataset.name;
                     document.getElementById('active-swatch').style.backgroundColor = this.activeColor;
-                    document.getElementById('c-name').innerText = this.activeColorName;
-                    document.getElementById('c-hex').innerText = this.activeColor.toUpperCase();
                     document.querySelectorAll('.swatch').forEach(s => s.classList.remove('swatch-active'));
                     sw.classList.add('swatch-active');
+                    this.render();
                 };
             });
 
             document.getElementById('reset-btn').onclick = () => window.location.reload();
-            document.getElementById('export-btn').onclick = () => {
-                const img = document.getElementById('final-result');
-                const l = document.createElement('a'); l.download = 'gemini-design.png';
-                l.href = img.src; l.click();
-            };
         }
 
         async fetchApiKey() {
-            const { data, error } = await this.supabase
-                .from('system_settings')
-                .select('setting_value')
-                .eq('setting_key', 'gemini_api_key')
-                .single();
-            
+            const { data } = await this.supabase.from('system_settings').select('setting_value').eq('setting_key', 'gemini_api_key').single();
             if (data?.setting_value) {
                 this.apiKey = data.setting_value;
-                document.getElementById('ai-status').classList.replace('bg-emerald-50', 'bg-emerald-600');
-                document.getElementById('ai-status').classList.replace('text-emerald-800', 'text-white');
-            } else {
-                console.warn("Gemini Master Key not found in Admin Settings.");
-                document.getElementById('ai-status').innerText = "AI AUTH REQ: CHECK ADMIN";
-                document.getElementById('ai-status').classList.replace('bg-emerald-50', 'bg-orange-50');
-                document.getElementById('ai-status').classList.replace('text-emerald-800', 'text-orange-800');
+                document.getElementById('ai-status').classList.add('bg-emerald-600', 'text-white');
+                document.getElementById('ai-status').innerHTML = '<span class="w-2 h-2 rounded-full bg-white animate-pulse"></span> Gemini Master Active';
             }
         }
 
@@ -216,9 +166,9 @@
                 const img = new Image();
                 img.onload = () => {
                     this.img = img;
-                    const resImg = document.getElementById('final-result');
-                    resImg.src = re.target.result;
-                    resImg.classList.add('opacity-100');
+                    this.resize();
+                    this.render();
+                    this.canvas.style.opacity = '1';
                     document.getElementById('export-hud').classList.remove('hidden');
                 };
                 img.src = re.target.result;
@@ -226,9 +176,16 @@
             reader.readAsDataURL(file);
         }
 
-        async generate() {
-            if (!this.apiKey) { alert('Gemini Master Key is missing. Please set it once in the Admin Section.'); return; }
-            if (!this.img) { alert('Please upload a room photo first.'); return; }
+        resize() {
+            const container = document.getElementById('visualizer-boundary');
+            const w = container.clientWidth - 100, h = container.clientHeight - 100, r = this.img.width / this.img.height;
+            if (r > w/h) { this.canvas.width = w; this.canvas.height = w/r; }
+            else { this.canvas.height = h; this.canvas.width = h*r; }
+        }
+
+        async executeGeminiGeometry() {
+            if (!this.apiKey) { alert('Gemini Key missing in Admin.'); return; }
+            if (!this.img) return;
 
             document.getElementById('loader-hud').classList.remove('hidden');
             
@@ -236,41 +193,63 @@
                 const genAI = new GoogleGenerativeAI(this.apiKey);
                 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-                const canvas = document.getElementById('hidden-canvas');
-                canvas.width = this.img.width; canvas.height = this.img.height;
-                const ctx = canvas.getContext('2d'); ctx.drawImage(this.img, 0, 0);
-                const base64 = canvas.toDataURL('image/jpeg', 0.8).split(',')[1];
+                const tempCanvas = document.createElement('canvas');
+                tempCanvas.width = 512; tempCanvas.height = 512 * (this.img.height/this.img.width);
+                const tCtx = tempCanvas.getContext('2d'); tCtx.drawImage(this.img, 0, 0, tempCanvas.width, tempCanvas.height);
+                const base64 = tempCanvas.toDataURL('image/jpeg', 0.6).split(',')[1];
 
-                const prompt = `Act as an architectural interior visualizer. 
-                Perform a high-fidelity recolor on this image for the main wall surfaces.
-                NEW WALL COLOR: ${this.activeColorName} (hex: ${this.activeColor}).
-                DESIGN REASONING:
-                - Preserve all architectural molding, texture, and shadows.
-                - Maintain luminosity and light bounces from the window and lamps.
-                - Do not modify furniture, decor, or flooring.
-                - The result must be a high-resolution professional marketing photo.`;
+                const prompt = `Act as an architectural geometry model. Find the main wall in this room.
+                Return ONLY a JSON array of coordinate pairs [[x,y], [x,y]] representing the polygon path of that wall.
+                Use a normalized scale of 0 to 100. Be extremely precise around moldings. Return no text, only the JSON.`;
 
                 const result = await model.generateContent([
-                    prompt,
-                    { inlineData: { data: base64, mimeType: "image/jpeg" } }
+                    prompt, { inlineData: { data: base64, mimeType: "image/jpeg" } }
                 ]);
 
-                // Standard Gemini 1.5 is the Orchestrator. 
-                // In a production environment, this text result would trigger a high-end Inpainting model.
-                console.log("Gemini Orchestration:", (await result.response).text());
+                const text = (await result.response).text();
+                const coords = JSON.parse(text.match(/\[\[.*\]\]/)[0]);
                 
-                alert("Gemini AI has analyzed the room and is orchestrating the design reasoning. (Backend Inpainting Active)");
+                this.paintWall(coords);
                 
             } catch (error) {
-                console.error(error);
-                alert('Gemini Inference Failed: ' + error.message);
+                console.error("Gemini Geometry Failure:", error);
+                alert("Gemini is still reasoning about the space. Adjusting parameters...");
             } finally {
                 document.getElementById('loader-hud').classList.add('hidden');
             }
         }
+
+        paintWall(coords) {
+            this.ctx.save();
+            this.ctx.beginPath();
+            coords.forEach(([x, y], i) => {
+                const realX = (x / 100) * this.canvas.width;
+                const realY = (y / 100) * this.canvas.height;
+                if (i === 0) this.ctx.moveTo(realX, realY);
+                else this.ctx.lineTo(realX, realY);
+            });
+            this.ctx.closePath();
+            this.ctx.clip();
+
+            // High-Fidelity Gemini Fill
+            this.ctx.globalAlpha = 0.85;
+            this.ctx.globalCompositeOperation = 'multiply';
+            this.ctx.fillStyle = this.activeColor;
+            this.ctx.fill();
+            
+            this.ctx.globalAlpha = 0.25;
+            this.ctx.globalCompositeOperation = 'overlay';
+            this.ctx.fill();
+            this.ctx.restore();
+        }
+
+        render() {
+            this.ctx.clearRect(0,0,this.canvas.width,this.canvas.height);
+            this.ctx.drawImage(this.img, 0,0,this.canvas.width,this.canvas.height);
+        }
     }
 
-    window.onload = () => new MasterGeminiVisualizer();
+    window.onload = () => new GeminiGeometryVisualizer();
 </script>
 </body>
 </html>
