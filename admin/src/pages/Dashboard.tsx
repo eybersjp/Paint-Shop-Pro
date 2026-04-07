@@ -214,6 +214,44 @@ export default function Dashboard() {
             </div>
           </div>
         </div>
+
+        {/* Gemini Master Config */}
+        <div className="lg:col-span-3 rounded-[3rem] bg-stone-900 p-10 text-white relative overflow-hidden border border-white/5 shadow-2xl">
+          <div className="flex items-center justify-between mb-8">
+            <div>
+              <h3 className="text-2xl font-display font-bold">Gemini AI Studio</h3>
+              <p className="text-[10px] uppercase font-bold tracking-[0.2em] text-stone-500 mt-1">Master Engine Configuration</p>
+            </div>
+            <div className="h-12 w-12 rounded-2xl bg-white/5 flex items-center justify-center"><span className="material-symbols-outlined text-orange-500">neurology</span></div>
+          </div>
+          
+          <div className="space-y-6">
+            <div className="space-y-2">
+              <label className="text-[10px] uppercase font-bold tracking-widest text-stone-400">Google AI API Key</label>
+              <div className="flex gap-4">
+                <input 
+                  type="password" 
+                  id="gemini-master-key"
+                  className="flex-1 bg-white/5 border border-white/10 rounded-xl px-5 h-12 text-sm text-stone-200 focus:ring-1 focus:ring-primary outline-none transition-all"
+                  placeholder="Paste Master Gemini Key..."
+                />
+                <Button 
+                  onClick={async () => {
+                    const key = (document.getElementById('gemini-master-key') as HTMLInputElement).value;
+                    const { error } = await supabase
+                      .from('system_settings')
+                      .upsert({ setting_key: 'gemini_api_key', setting_value: key }, { onConflict: 'setting_key' });
+                    if (error) alert('Error saving Gemini key'); else alert('Gemini Key Synced');
+                  }}
+                  className="rounded-xl px-8 h-12 font-bold"
+                >
+                  Save & Sync
+                </Button>
+              </div>
+              <p className="text-[9px] text-stone-500 leading-relaxed italic">Updating this key will instantly reconfigure all Design Visualizer sessions across the platform.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
