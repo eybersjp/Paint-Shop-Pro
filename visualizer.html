@@ -35,9 +35,11 @@
         .custom-scrollbar::-webkit-scrollbar { width: 4px; }
         .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
         .custom-scrollbar::-webkit-scrollbar-thumb { background: #dac1b8; border-radius: 10px; }
+        
+        .canvas-shadow { shadow-[0_50px_100px_rgba(0,0,0,0.1)]; }
     </style>
 </head>
-<body class="bg-[#fbf9f6] text-[#1b1c1a] font-body antialiased">
+<body class="bg-[#fbf9f6] text-[#1b1c1a] font-body antialiased selection:bg-orange-100 selection:text-orange-900">
 
 <header class="bg-white/80 backdrop-blur-md fixed top-0 w-full z-50 shadow-sm border-b border-stone-100 font-['Space_Grotesk']">
     <div class="flex justify-between items-center px-8 py-4 max-w-full mx-auto">
@@ -55,32 +57,48 @@
 </header>
 
 <main class="pt-16 min-h-screen flex flex-col lg:flex-row">
-    <!-- Design Sidebar -->
+    <!-- Design Center Sidebar -->
     <aside class="w-full lg:w-[400px] bg-white border-r border-stone-200 p-8 flex flex-col gap-8 h-[calc(100vh-64px)] sticky top-16 z-40 overflow-y-auto custom-scrollbar">
         <div>
             <h1 class="font-headline text-3xl font-bold tracking-tight mb-2">Design Center</h1>
-            <p class="text-[10px] text-stone-500 font-bold uppercase tracking-widest bg-stone-100 px-3 py-1 rounded-full w-fit">AI Engine Active</p>
+            <div class="flex items-center gap-2 text-[10px] text-emerald-700 font-bold uppercase tracking-widest bg-emerald-50 w-fit px-3 py-1 rounded-full border border-emerald-100">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                Fluid AI Engine v3.0
+            </div>
         </div>
 
-        <!-- Upload Button -->
-        <div id="upload-trigger" class="group border-2 border-dashed border-stone-200 rounded-2xl p-8 bg-stone-50 hover:bg-stone-100 hover:border-orange-800/30 transition-all cursor-pointer text-center">
+        <!-- Precision Mode HUD -->
+        <div class="bg-orange-50/50 p-6 rounded-2xl border border-orange-100 flex flex-col gap-5">
+            <div class="flex justify-between items-center text-[10px] font-bold uppercase tracking-widest text-orange-900">
+                <span>Boundary Selection</span>
+                <button id="clear-all" class="text-orange-900 hover:underline">Reset Selection</button>
+            </div>
+            
+            <div class="space-y-4">
+                <div class="flex justify-between items-center text-[10px] font-bold text-stone-600 uppercase tracking-widest">
+                    <span>Precision Sensitivity</span>
+                    <span id="tol-val" class="bg-white px-2 py-0.5 rounded border border-stone-200 text-orange-900">30</span>
+                </div>
+                <input type="range" id="tolerance-slider" class="w-full h-1 bg-stone-200 rounded-full appearance-none accent-orange-900" min="5" max="80" value="30">
+                <p class="text-[9px] text-stone-500 leading-relaxed italic">Lower for sharp edges (trims). Higher for large walls.</p>
+            </div>
+        </div>
+
+        <!-- Upload Region -->
+        <div id="upload-trigger" class="group border-2 border-dashed border-stone-200 rounded-2xl p-8 bg-stone-50 hover:bg-white hover:border-orange-800/30 transition-all cursor-pointer text-center">
             <div class="w-14 h-14 rounded-full bg-orange-100 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
                 <span class="material-symbols-outlined text-orange-900">cloud_upload</span>
             </div>
-            <p class="font-bold text-sm">Upload Room Photo</p>
-            <p class="text-[10px] text-stone-500 mt-1 opacity-70 italic">Click here to start</p>
+            <p class="font-bold text-sm">Upload Room Imagery</p>
+            <p class="text-[10px] text-stone-400 mt-1 uppercase tracking-tighter">Click to select file</p>
         </div>
 
-        <div id="region-list-container" class="hidden space-y-4">
-            <div class="flex justify-between items-center text-[10px] font-bold uppercase tracking-widest text-stone-500 border-b pb-2">
-                <span>Detected Surfaces</span>
-                <div class="flex gap-3"><button id="select-all" class="text-orange-900">Select All</button><button id="clear-all">Clear</button></div>
+        <!-- Pigments -->
+        <div class="space-y-6 pt-4 border-t">
+            <div class="flex justify-between items-center">
+                <h3 class="font-bold text-xs uppercase tracking-widest text-stone-500">Pick Pigment</h3>
+                <div id="active-swatch" class="w-6 h-6 rounded-lg shadow-md border border-white transition-colors" style="background-color: #a23e26;"></div>
             </div>
-            <div id="regions-list" class="space-y-2 max-h-[250px] overflow-y-auto pr-1 custom-scrollbar"></div>
-        </div>
-
-        <div class="space-y-4 pt-4 border-t">
-            <div class="flex justify-between items-center"><h3 class="font-bold text-xs uppercase tracking-widest text-stone-500">Pick Pigment</h3><div id="active-swatch" class="w-6 h-6 rounded-lg shadow-md transition-colors" style="background-color: #a23e26;"></div></div>
             <div class="grid grid-cols-4 gap-2">
                 <button class="swatch w-full aspect-square rounded-xl shadow-sm border border-stone-100 swatch-active" data-color="#a23e26" data-name="Zambezi Ochre" style="background-color: #a23e26;"></button>
                 <button class="swatch w-full aspect-square rounded-xl shadow-sm border border-stone-100" data-color="#54433c" data-name="Great Zimbabwe Grey" style="background-color: #54433c;"></button>
@@ -88,51 +106,62 @@
                 <button class="swatch w-full aspect-square rounded-xl shadow-sm border border-stone-100" data-color="#ae472e" data-name="Kariba Terracotta" style="background-color: #ae472e;"></button>
                 <button class="swatch w-full aspect-square rounded-xl shadow-sm border border-stone-100" data-color="#365177" data-name="Cobalt Mine" style="background-color: #365177;"></button>
                 <button class="swatch w-full aspect-square rounded-xl shadow-sm border border-stone-100" data-color="#eae8e5" data-name="Mist of Nyanga" style="background-color: #eae8e5;"></button>
-                <button class="swatch w-full aspect-square rounded-xl shadow-sm border border-stone-100" data-color="#f5f3f0" data-name="Nyanga Mist" style="background-color: #f5f3f0;"></button>
-                <div class="relative w-full aspect-square rounded-xl border-2 border-dashed border-stone-200 flex items-center justify-center cursor-pointer hover:bg-stone-50"><span class="material-symbols-outlined text-stone-400">colorize</span><input type="color" id="custom-color" class="absolute inset-0 opacity-0 cursor-pointer"></div>
+                <button class="swatch w-full aspect-square rounded-xl shadow-sm border border-stone-100" data-color="#f2efe9" data-name="Sahara Sand" style="background-color: #f2efe9;"></button>
+                <div class="relative w-full aspect-square rounded-xl border-2 border-dashed border-stone-200 flex items-center justify-center cursor-pointer hover:bg-stone-50"><span class="material-symbols-outlined text-stone-400">palette</span><input type="color" id="custom-color" class="absolute inset-0 opacity-0 cursor-pointer"></div>
             </div>
-            <div id="color-badge" class="bg-stone-50 p-4 rounded-xl flex justify-between items-center border border-stone-100">
-                <div><p id="c-name" class="font-bold text-sm">Zambezi Ochre</p><p id="c-hex" class="text-[10px] font-mono text-stone-400">#A23E26</p></div>
-                <button id="apply-btn" class="bg-orange-900 text-white px-5 py-2.5 rounded-lg font-bold text-[9px] uppercase tracking-widest shadow-md hover:brightness-110 active:scale-95 transition-all">Apply</button>
+            
+            <div id="color-badge" class="bg-white p-5 rounded-2xl flex justify-between items-center border border-stone-100 shadow-sm">
+                <div>
+                    <p id="c-name" class="font-bold text-sm text-stone-900">Zambezi Ochre</p>
+                    <p id="c-hex" class="text-[10px] font-mono text-stone-400 uppercase tracking-tighter">#A23E26</p>
+                </div>
+                <div class="flex gap-2">
+                    <button id="undo-btn" class="p-2 border border-stone-100 rounded-lg hover:bg-stone-50 transition-colors" title="Undo"><span class="material-symbols-outlined text-sm">undo</span></button>
+                    <button id="apply-btn" class="bg-orange-900 text-white px-5 py-2.5 rounded-lg font-bold text-[9px] uppercase tracking-widest shadow-md hover:brightness-110 active:scale-95 transition-all">Apply</button>
+                </div>
             </div>
         </div>
 
+        <!-- Opacity Slider -->
         <div class="mt-auto pt-6 border-t space-y-4 pb-8">
-            <h3 class="font-bold text-xs uppercase tracking-widest text-stone-500">Intensity</h3>
-            <div class="bg-stone-50 p-4 rounded-xl"><input type="range" id="opacity-slider" class="w-full h-1 bg-stone-200 rounded-full appearance-none accent-orange-900" min="0" max="100" value="75"><div class="flex justify-between text-[8px] font-bold text-stone-400 mt-2 uppercase tracking-widest"><span>Thin Coat</span><span id="op-val">75%</span><span>Heavy Coat</span></div></div>
+            <div class="flex justify-between items-center"><h3 class="font-bold text-xs uppercase tracking-widest text-stone-500">Render Contrast</h3><span class="text-[9px] font-bold text-orange-900 bg-orange-50 px-2 py-0.5 rounded" id="op-val">75%</span></div>
+            <div class="bg-stone-50 p-4 rounded-xl"><input type="range" id="opacity-slider" class="w-full h-1 bg-stone-200 rounded-full appearance-none accent-orange-900" min="0" max="100" value="75"></div>
         </div>
     </aside>
 
-    <!-- Visualizer Canvas -->
-    <section class="flex-1 bg-stone-50 relative flex items-center justify-center p-6 lg:p-12">
+    <!-- Workspace -->
+    <section class="flex-1 bg-[#f5f3f0] relative flex items-center justify-center p-6 lg:p-12 overflow-hidden">
         <div id="visualizer-boundary" class="relative w-full h-full flex items-center justify-center">
-            <div id="canvas-container" class="relative max-w-full max-h-full aspect-video bg-white shadow-2xl rounded-3xl overflow-hidden border border-stone-200 transition-all duration-700">
-                <!-- Landing HUD -->
-                <div id="landing-hud" class="absolute inset-0 z-40 bg-white/60 backdrop-blur-sm flex items-center justify-center cursor-pointer group transition-all">
-                    <div class="bg-white p-12 rounded-[3.5rem] shadow-[0_30px_100px_rgba(0,0,0,0.1)] border border-stone-100 flex flex-col items-center text-center gap-8 transform transition-all group-hover:scale-105" onclick="document.getElementById('hidden-upload').click()">
-                        <div class="w-24 h-24 rounded-full bg-gradient-to-tr from-orange-800 to-orange-900 flex items-center justify-center shadow-xl shadow-orange-900/20"><span class="material-symbols-outlined text-4xl text-white">camera</span></div>
-                        <div class="space-y-2"><h2 class="font-headline text-3xl font-bold text-stone-900 tracking-tight">Design Your Vision</h2><p class="text-stone-500 text-sm max-w-[280px] leading-relaxed">Experience our pigments on your own walls. <br><span class="font-bold text-orange-900">Upload a photo to begin.</span></p></div>
-                        <button class="bg-orange-900 text-white px-10 py-3.5 rounded-full font-bold uppercase tracking-widest text-[10px] shadow-lg hover:brightness-110 active:scale-95 transition-all">Select Image</button>
+            <div id="canvas-container" class="relative shadow-[0_50px_100px_rgba(0,0,0,0.08)] rounded-[3rem] overflow-hidden bg-white border border-white transition-all duration-700 max-w-full max-h-full">
+                
+                <!-- Onboarding HUD -->
+                <div id="landing-hud" class="absolute inset-0 z-40 bg-white/40 backdrop-blur-lg flex items-center justify-center cursor-pointer group transition-all duration-700">
+                    <div class="bg-white/95 p-12 rounded-[3.5rem] shadow-2xl border border-white/50 flex flex-col items-center text-center gap-8 transform transition-all group-hover:scale-[1.02]" onclick="document.getElementById('hidden-upload').click()">
+                        <div class="w-24 h-24 rounded-full bg-orange-900 flex items-center justify-center shadow-2xl shadow-orange-900/20"><span class="material-symbols-outlined text-4xl text-white">image</span></div>
+                        <div class="space-y-3">
+                            <h2 class="font-headline text-4xl font-bold text-stone-900 tracking-tight">Design Your Space</h2>
+                            <p class="text-stone-500 text-sm max-w-[280px] leading-relaxed">Simply upload a photo and <span class="font-bold text-orange-900">click any surface</span> to recolor it with AI precision.</p>
+                        </div>
+                        <button class="bg-orange-900 text-white px-10 py-4 rounded-full font-bold uppercase tracking-widest text-[10px] shadow-lg hover:shadow-orange-900/40 transition-all flex items-center gap-3">Choose Room Photo <span class="material-symbols-outlined text-sm">arrow_forward</span></button>
                     </div>
                 </div>
 
                 <!-- Processing HUD -->
-                <div id="loader-hud" class="hidden absolute inset-0 z-50 bg-white/90 backdrop-blur-xl flex flex-col items-center justify-center gap-6">
-                    <div class="w-16 h-16 border-4 border-stone-100 border-t-orange-900 rounded-full animate-spin"></div>
-                    <div class="text-center space-y-1"><p class="font-headline font-bold text-2xl tracking-tight">Processing Space</p><p class="text-[10px] text-stone-500 uppercase tracking-[0.3em]">AI Boundary Detection...</p></div>
+                <div id="loader-hud" class="hidden absolute inset-0 z-50 bg-white/90 backdrop-blur-2xl flex flex-col items-center justify-center gap-8">
+                    <div class="relative w-20 h-20 flex items-center justify-center">
+                        <div class="absolute inset-0 border-4 border-stone-100 rounded-full"></div>
+                        <div class="absolute inset-0 border-4 border-t-orange-900 rounded-full animate-spin"></div>
+                    </div>
+                    <div class="text-center space-y-1"><p class="font-headline font-bold text-2xl tracking-tight text-stone-900">Calibrating Vision</p><p class="text-[10px] text-stone-400 font-bold uppercase tracking-[0.4em] animate-pulse">Mapping Surface Topology...</p></div>
                 </div>
 
-                <canvas id="main-canvas" class="max-w-full max-h-full object-contain opacity-0 transition-opacity duration-700"></canvas>
+                <canvas id="main-canvas" class="max-w-full max-h-full opacity-0 transition-opacity duration-1000 cursor-crosshair"></canvas>
                 <input type="file" id="hidden-upload" class="hidden" accept="image/*">
                 
-                <!-- Tools -->
-                <div id="float-tools" class="hidden absolute top-8 right-8 flex flex-col gap-3">
-                    <button id="undo-btn" class="w-14 h-14 rounded-2xl bg-white shadow-xl border border-stone-100 flex items-center justify-center hover:bg-stone-50 transition-all active:scale-90"><span class="material-symbols-outlined">undo</span></button>
-                    <button id="reset-btn" class="w-14 h-14 rounded-2xl bg-white shadow-xl border border-stone-100 flex items-center justify-center hover:bg-red-50 hover:text-red-600 transition-all active:scale-90"><span class="material-symbols-outlined">refresh</span></button>
-                </div>
-
-                <div id="export-hud" class="hidden absolute bottom-10 left-1/2 -translate-x-1/2">
-                    <button id="export-btn" class="px-12 py-5 bg-orange-900 text-white rounded-full shadow-2xl font-bold text-[10px] uppercase tracking-[0.3em] hover:brightness-110 transition-all hover:-translate-y-1 active:scale-95 flex items-center gap-4"><span class="material-symbols-outlined">auto_awesome</span> Export Design</button>
+                <!-- Floating Export HUD -->
+                <div id="export-hud" class="hidden absolute bottom-10 left-1/2 -translate-x-1/2 flex items-center gap-4 bg-white/40 backdrop-blur-xl p-3 rounded-full border border-white/50 shadow-2xl">
+                    <button id="reset-btn" class="w-14 h-14 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-stone-50 transition-all active:scale-95 text-stone-500" title="Reset Camera"><span class="material-symbols-outlined">refresh</span></button>
+                    <button id="export-btn" class="px-10 py-4 bg-orange-900 text-white rounded-full shadow-xl font-bold text-[10px] uppercase tracking-[0.3em] hover:brightness-110 flex items-center gap-3">Save Final Design <span class="material-symbols-outlined text-sm">auto_awesome</span></button>
                 </div>
             </div>
         </div>
@@ -145,14 +174,11 @@
             this.canvas = document.getElementById('main-canvas');
             this.ctx = this.canvas.getContext('2d', { willReadFrequently: true });
             this.img = null;
-            this.segments = null;
-            this.selectedIds = new Set();
+            this.mask = null; // Uint8Array
             this.activeColor = '#a23e26';
             this.opacity = 0.75;
-            this.hoveredId = -1;
-            
-            this.paintCanvas = document.createElement('canvas');
-            this.pCtx = this.paintCanvas.getContext('2d');
+            this.tolerance = 30;
+            this.originalData = null;
             
             this.init();
         }
@@ -161,6 +187,7 @@
             const upTrigger = document.getElementById('upload-trigger');
             const hiddenUp = document.getElementById('hidden-upload');
             const opSlider = document.getElementById('opacity-slider');
+            const tolSlider = document.getElementById('tolerance-slider');
 
             upTrigger.onclick = () => hiddenUp.click();
             hiddenUp.onchange = (e) => this.handleUpload(e);
@@ -171,8 +198,12 @@
                 this.render();
             };
 
-            this.canvas.addEventListener('mousemove', (e) => this.handleHover(e));
-            this.canvas.addEventListener('click', (e) => this.handleClick(e));
+            tolSlider.oninput = (e) => {
+                this.tolerance = parseInt(e.target.value);
+                document.getElementById('tol-val').innerText = this.tolerance;
+            };
+
+            this.canvas.onclick = (e) => this.handleInteraction(e);
             
             document.querySelectorAll('.swatch').forEach(sw => {
                 sw.onclick = () => {
@@ -186,14 +217,9 @@
                 };
             });
 
-            document.getElementById('select-all').onclick = () => {
-                for(let i=1; i<=10; i++) this.selectedIds.add(i);
-                this.render(); this.updateUI();
-            };
-            document.getElementById('clear-all').onclick = () => {
-                this.selectedIds.clear(); this.render(); this.updateUI();
-            };
-            document.getElementById('reset-btn').onclick = () => location.reload();
+            document.getElementById('clear-all').onclick = () => { this.mask = null; this.render(); };
+            document.getElementById('reset-btn').onclick = () => { this.mask = null; this.render(); };
+            document.getElementById('undo-btn').onclick = () => { this.mask = null; this.render(); };
             document.getElementById('export-btn').onclick = () => {
                 const l = document.createElement('a'); l.download = 'earthbound-design.png';
                 l.href = this.canvas.toDataURL(); l.click();
@@ -216,16 +242,15 @@
             const reader = new FileReader();
             reader.onload = (re) => {
                 const img = new Image();
-                img.onload = async () => {
+                img.onload = () => {
                     this.img = img;
                     this.resize();
-                    await this.segment();
+                    this.ctx.drawImage(this.img, 0, 0, this.canvas.width, this.canvas.height);
+                    this.originalData = this.ctx.getImageData(0, 0, this.canvas.width, this.canvas.height).data;
                     document.getElementById('loader-hud').classList.add('hidden');
-                    document.getElementById('region-list-container').classList.remove('hidden');
-                    document.getElementById('float-tools').classList.remove('hidden');
                     document.getElementById('export-hud').classList.remove('hidden');
                     this.canvas.style.opacity = '1';
-                    this.render(); this.updateUI();
+                    this.render();
                 };
                 img.src = re.target.result;
             };
@@ -233,100 +258,129 @@
         }
 
         resize() {
-            const cont = document.getElementById('canvas-container');
+            const container = document.getElementById('canvas-container');
+            const maxWidth = container.clientWidth * 0.95;
+            const maxHeight = container.clientHeight * 0.95;
             const ratio = this.img.width / this.img.height;
-            const cRatio = cont.clientWidth / cont.clientHeight;
-            if (ratio > cRatio) {
-                this.canvas.width = cont.clientWidth; this.canvas.height = cont.clientWidth / ratio;
+            
+            if (ratio > maxWidth / maxHeight) {
+                this.canvas.width = maxWidth;
+                this.canvas.height = maxWidth / ratio;
             } else {
-                this.canvas.height = cont.clientHeight; this.canvas.width = cont.clientHeight * ratio;
+                this.canvas.height = maxHeight;
+                this.canvas.width = maxHeight * ratio;
             }
-            this.paintCanvas.width = this.canvas.width; this.paintCanvas.height = this.canvas.height;
         }
 
-        async segment() {
-            const w = this.canvas.width; const h = this.canvas.height;
-            this.segments = new Int16Array(w * h).fill(-1);
-            const seeds = [];
-            for (let i = 1; i <= 10; i++) {
-                seeds.push({ x: Math.floor(Math.random() * w), y: Math.floor(Math.random() * h), id: i });
-            }
-            for (let y = 0; y < h; y++) {
-                if (y % 100 === 0) await new Promise(r => setTimeout(r, 0));
-                for (let x = 0; x < w; x++) {
-                    let bD = Infinity; let bI = -1;
-                    for (const s of seeds) {
-                        const d = (x-s.x)**2 + (y-s.y)**2;
-                        if (d < bD) { bD = d; bI = s.id; }
-                    }
-                    this.segments[y * w + x] = bI;
+        handleInteraction(e) {
+            if (!this.img) return;
+            const rect = this.canvas.getBoundingClientRect();
+            const x = Math.floor((e.clientX - rect.left) * (this.canvas.width / rect.width));
+            const y = Math.floor((e.clientY - rect.top) * (this.canvas.height / rect.height));
+
+            this.fluidFill(x, y);
+            this.render();
+        }
+
+        fluidFill(startX, startY) {
+            const w = this.canvas.width;
+            const h = this.canvas.height;
+            const data = this.originalData;
+            
+            if (!this.mask) this.mask = new Uint8Array(w * h);
+            
+            const pos = (startY * w + startX) * 4;
+            const startR = data[pos];
+            const startG = data[pos + 1];
+            const startB = data[pos + 2];
+
+            const queue = [[startX, startY]];
+            const visited = new Set();
+            const toleranceSq = this.tolerance * this.tolerance;
+
+            while (queue.length > 0) {
+                const [x, y] = queue.shift();
+                const idx = y * w + x;
+                
+                if (visited.has(idx)) continue;
+                visited.add(idx);
+
+                const p = idx * 4;
+                const r = data[p];
+                const g = data[p+1];
+                const b = data[p+2];
+
+                // Efficient Euclidean Distance comparison
+                const distSq = (r-startR)**2 + (g-startG)**2 + (b-startB)**2;
+                
+                if (distSq < toleranceSq * 4) { // Multiplier for softer architectural gradients
+                    this.mask[idx] = 1;
+
+                    if (x > 0) queue.push([x-1, y]);
+                    if (x < w-1) queue.push([x+1, y]);
+                    if (y > 0) queue.push([x, y-1]);
+                    if (y < h-1) queue.push([x, y+1]);
+                    
+                    // Add diagnostics (diagonal neighbors) for better coverage of textured walls
+                    if (x > 0 && y > 0) queue.push([x-1, y-1]);
+                    if (x < w-1 && y < h-1) queue.push([x+1, y+1]);
                 }
-            }
-        }
-
-        handleHover(e) {
-            const r = this.canvas.getBoundingClientRect();
-            const x = (e.clientX-r.left)*(this.canvas.width/r.width);
-            const y = (e.clientY-r.top)*(this.canvas.height/r.height);
-            const id = this.segments ? this.segments[Math.floor(y)*this.canvas.width+Math.floor(x)] : -1;
-            if (id !== this.hoveredId) { this.hoveredId = id; this.render(); }
-        }
-
-        handleClick(e) {
-            const r = this.canvas.getBoundingClientRect();
-            const x = (e.clientX-r.left)*(this.canvas.width/r.width);
-            const y = (e.clientY-r.top)*(this.canvas.height/r.height);
-            const id = this.segments ? this.segments[Math.floor(y)*this.canvas.width+Math.floor(x)] : -1;
-            if (id !== -1) {
-                if (this.selectedIds.has(id)) this.selectedIds.delete(id);
-                else this.selectedIds.add(id);
-                this.render(); this.updateUI();
-            }
-        }
-
-        updateUI() {
-            const l = document.getElementById('regions-list'); l.innerHTML = '';
-            for (let i = 1; i <= 10; i++) {
-                const s = this.selectedIds.has(i);
-                const d = document.createElement('div');
-                d.className = `p-3 rounded-xl border cursor-pointer flex justify-between items-center transition-all ${s ? 'bg-orange-50 border-orange-800/30' : 'bg-white border-stone-100 hover:border-stone-200'}`;
-                d.onclick = () => { if(s) this.selectedIds.delete(i); else this.selectedIds.add(i); this.render(); this.updateUI(); };
-                d.innerHTML = `<div class="flex items-center gap-3"><div class="w-6 h-6 rounded bg-stone-100 flex items-center justify-center text-[10px] font-bold ${s ? 'bg-orange-800 text-white' : ''}">${i}</div><span class="text-[10px] font-bold">Surface Section 0${i}</span></div>${s ? '<span class="material-symbols-outlined text-orange-900 text-sm">done</span>' : ''}`;
-                l.appendChild(d);
             }
         }
 
         render() {
             if (!this.img) return;
-            const w = this.canvas.width; const h = this.canvas.height;
-            this.ctx.clearRect(0,0,w,h); this.ctx.drawImage(this.img,0,0,w,h);
-            this.pCtx.clearRect(0,0,w,h);
+            const w = this.canvas.width;
+            const h = this.canvas.height;
             
-            for (let i = 0; i < this.segments.length; i++) {
-                const id = this.segments[i];
-                if (this.selectedIds.has(id)) {
-                    this.pCtx.fillStyle = this.activeColor;
-                    this.pCtx.fillRect(i % w, Math.floor(i / w), 1, 1);
-                } else if (id === this.hoveredId) {
-                    this.ctx.fillStyle = 'rgba(255,255,255,0.1)';
-                    this.ctx.fillRect(i % w, Math.floor(i / w), 1, 1);
+            this.ctx.clearRect(0, 0, w, h);
+            this.ctx.drawImage(this.img, 0, 0, w, h);
+            
+            if (!this.mask) return;
+
+            const paintCanvas = document.createElement('canvas');
+            paintCanvas.width = w;
+            paintCanvas.height = h;
+            const pCtx = paintCanvas.getContext('2d');
+            
+            const imageData = pCtx.createImageData(w, h);
+            const rgb = this.hexToRgb(this.activeColor);
+            
+            for (let i = 0; i < this.mask.length; i++) {
+                if (this.mask[i] === 1) {
+                    imageData.data[i*4] = rgb.r;
+                    imageData.data[i*4+1] = rgb.g;
+                    imageData.data[i*4+2] = rgb.b;
+                    imageData.data[i*4+3] = 255;
                 }
             }
+            pCtx.putImageData(imageData, 0, 0);
 
-            if (this.selectedIds.size > 0) {
-                this.ctx.save();
-                this.ctx.globalAlpha = this.opacity;
-                this.ctx.globalCompositeOperation = 'multiply';
-                this.ctx.drawImage(this.paintCanvas, 0, 0);
-                this.ctx.globalCompositeOperation = 'overlay';
-                this.ctx.globalAlpha = this.opacity * 0.1;
-                this.ctx.drawImage(this.paintCanvas, 0, 0);
-                this.ctx.restore();
-            }
+            // High-fidelity architectural blending
+            this.ctx.save();
+            this.ctx.globalAlpha = this.opacity;
+            this.ctx.globalCompositeOperation = 'multiply';
+            this.ctx.drawImage(paintCanvas, 0, 0);
+            
+            // Highlight preservation pass
+            this.ctx.globalCompositeOperation = 'overlay';
+            this.ctx.globalAlpha = this.opacity * 0.15;
+            this.ctx.drawImage(paintCanvas, 0, 0);
+            
+            this.ctx.restore();
+        }
+
+        hexToRgb(hex) {
+            const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+            return result ? {
+                r: parseInt(result[1], 16),
+                g: parseInt(result[2], 16),
+                b: parseInt(result[3], 16)
+            } : { r: 0, g: 0, b: 0 };
         }
     }
 
-    new VisualizerApp();
+    window.onload = () => new VisualizerApp();
 </script>
 </body>
 </html>
