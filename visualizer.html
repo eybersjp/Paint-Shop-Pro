@@ -13,259 +13,126 @@
             theme: {
               extend: {
                 "colors": {
-                        "secondary-fixed": "#bcedd4",
-                        "secondary-container": "#baebd1",
-                        "surface-bright": "#fbf9f6",
-                        "inverse-on-surface": "#f2f0ed",
-                        "on-error-container": "#93000a",
                         "on-primary": "#ffffff",
-                        "surface-container-high": "#eae8e5",
-                        "on-secondary-container": "#3e6b57",
-                        "surface-container-highest": "#e4e2df",
-                        "tertiary-fixed": "#d5e3ff",
-                        "surface-variant": "#e4e2df",
-                        "on-tertiary-container": "#dde8ff",
-                        "on-error": "#ffffff",
-                        "on-primary-fixed": "#3d0700",
                         "surface": "#fbf9f6",
-                        "on-secondary-fixed-variant": "#214f3d",
-                        "on-surface-variant": "#54433c",
-                        "inverse-primary": "#ffb4a3",
-                        "secondary": "#3a6753",
-                        "primary-fixed": "#ffdad2",
-                        "on-tertiary-fixed-variant": "#2d486d",
-                        "outline": "#87736b",
-                        "tertiary-fixed-dim": "#adc8f5",
-                        "error": "#ba1a1a",
-                        "on-tertiary": "#ffffff",
-                        "inverse-surface": "#30312f",
-                        "on-secondary-fixed": "#002115",
-                        "on-surface": "#1b1c1a",
-                        "on-background": "#1b1c1a",
-                        "on-secondary": "#ffffff",
-                        "surface-container-low": "#f5f3f0",
-                        "tertiary-container": "#4f6991",
-                        "on-primary-fixed-variant": "#822711",
-                        "on-tertiary-fixed": "#001c3b",
-                        "primary-fixed-dim": "#ffb4a3",
-                        "secondary-fixed-dim": "#a1d1b9",
-                        "surface-tint": "#a23e26",
-                        "tertiary": "#365177",
-                        "surface-dim": "#dbdad7",
-                        "primary-container": "#ae472e",
-                        "surface-container": "#efeeeb",
                         "primary": "#8e2f19",
                         "outline-variant": "#dac1b8",
-                        "surface-container-lowest": "#ffffff",
                         "background": "#fbf9f6",
-                        "on-primary-container": "#ffe1da",
-                        "error-container": "#ffdad6"
-                },
-                "borderRadius": {
-                        "DEFAULT": "0.125rem",
-                        "lg": "0.25rem",
-                        "xl": "0.5rem",
-                        "full": "0.75rem"
                 },
                 "fontFamily": {
                         "headline": ["Space Grotesk"],
-                        "body": ["Manrope"],
-                        "label": ["Manrope"]
+                        "body": ["Manrope"]
                 }
               },
             },
           }
         </script>
     <style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        .swatch-active {
-            outline: 2px solid #87736b;
-            outline-offset: 4px;
-        }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .swatch-active { outline: 2px solid #8e2f19; outline-offset: 4px; }
         .hide-scrollbar::-webkit-scrollbar { display: none; }
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-        
         .custom-scrollbar::-webkit-scrollbar { width: 4px; }
         .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
         .custom-scrollbar::-webkit-scrollbar-thumb { background: #dac1b8; border-radius: 10px; }
-        
-        @keyframes pulse-blue {
-            0% { background-color: rgba(0, 150, 255, 0.1); }
-            50% { background-color: rgba(0, 150, 255, 0.2); }
-            100% { background-color: rgba(0, 150, 255, 0.1); }
-        }
-        .region-glow { animation: pulse-blue 2s infinite ease-in-out; }
     </style>
 </head>
-<body class="bg-background text-on-background font-body antialiased">
+<body class="bg-[#fbf9f6] text-[#1b1c1a] font-body antialiased">
 
-<header class="bg-stone-50/70 dark:bg-stone-900/70 backdrop-blur-md fixed top-0 w-full z-50 shadow-sm dark:shadow-none font-['Space_Grotesk']">
+<header class="bg-white/80 backdrop-blur-md fixed top-0 w-full z-50 shadow-sm border-b border-stone-100 font-['Space_Grotesk']">
     <div class="flex justify-between items-center px-8 py-4 max-w-full mx-auto">
-        <div class="text-2xl font-bold text-orange-900 dark:text-orange-100 tracking-tight cursor-pointer" onclick="window.location.href='index.html'">Earthbound Studio</div>
+        <div class="text-2xl font-bold text-orange-900 tracking-tight cursor-pointer" onclick="window.location.href='index.html'">Earthbound Studio</div>
         <nav class="hidden md:flex items-center gap-8 tracking-tight font-medium">
-            <a class="text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors" href="shop.html">Shop</a>
-            <a class="text-orange-800 dark:text-orange-300 border-b-2 border-orange-800 dark:border-orange-300 pb-1 px-2" href="visualizer.html">Visualizer</a>
-            <a class="text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors" href="collection.html">Collections</a>
+            <a class="text-stone-600 hover:text-stone-900 transition-colors" href="shop.html">Shop</a>
+            <a class="text-orange-800 border-b-2 border-orange-800 pb-1 px-2" href="visualizer.html">Visualizer</a>
+            <a class="text-stone-600 hover:text-stone-900 transition-colors" href="collection.html">Collections</a>
         </nav>
         <div class="flex items-center gap-4">
-            <button class="p-2 transition-colors hover:bg-stone-100/50 dark:hover:bg-stone-800/50 rounded-full scale-95 active:duration-75">
-                <span class="material-symbols-outlined text-orange-900 dark:text-orange-200" data-icon="shopping_cart">shopping_cart</span>
-            </button>
-            <div class="w-10 h-10 rounded-full overflow-hidden border border-outline-variant/20 shadow-inner">
-                <img alt="User profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAb9SvW_9WbY4Hep9BleLlmN1kG3uWGJlHe7eBwFt5RgsYkjyfJ_Bs84aiCUPYLxsAZg-3kc66yKo7ltcw0l6EpztJMMqjTxd5EiSS88vljTrixJHJIj_4_pP1wR7o8xI4-E-wYwDEcezH_HRa4BUAUhJO0YMWJhyjgM5TxSNHEwdZ_fpa76GcoHqnpVF8QBNrOqPcqNQGuFTZ22emxG-zF2LaF35gGAcXZyjqXP0ApkLaqjzwKn1l7jVBYLyX6tlCbm0O6W9PAZQ"/>
-            </div>
+            <button class="p-2"><span class="material-symbols-outlined text-orange-900">shopping_cart</span></button>
+            <div class="w-10 h-10 rounded-full overflow-hidden border border-stone-200"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAb9SvW_9WbY4Hep9BleLlmN1kG3uWGJlHe7eBwFt5RgsYkjyfJ_Bs84aiCUPYLxsAZg-3kc66yKo7ltcw0l6EpztJMMqjTxd5EiSS88vljTrixJHJIj_4_pP1wR7o8xI4-E-wYwDEcezH_HRa4BUAUhJO0YMWJhyjgM5TxSNHEwdZ_fpa76GcoHqnpVF8QBNrOqPcqNQGuFTZ22emxG-zF2LaF35gGAcXZyjqXP0ApkLaqjzwKn1l7jVBYLyX6tlCbm0O6W9PAZQ"/></div>
         </div>
     </div>
 </header>
 
-<main class="pt-16 min-h-screen flex flex-col lg:flex-row gap-0">
-    <!-- Design Center Sidebar -->
-    <aside class="w-full lg:w-[420px] bg-surface-container-low border-r border-outline-variant/10 p-8 flex flex-col gap-8 overflow-y-auto lg:h-[calc(100vh-64px)] lg:sticky lg:top-16 z-40">
-        <div class="space-y-2">
-            <h1 class="font-headline text-3xl font-bold tracking-tight text-on-surface">Design Center</h1>
-            <div class="flex items-center gap-2 text-[9px] text-on-surface-variant font-bold uppercase tracking-[0.2em] bg-surface-container-high w-fit px-3 py-1 rounded-full shadow-sm">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                AI Visualizer Engine v2.0
+<main class="pt-16 min-h-screen flex flex-col lg:flex-row">
+    <!-- Design Sidebar -->
+    <aside class="w-full lg:w-[400px] bg-white border-r border-stone-200 p-8 flex flex-col gap-8 h-[calc(100vh-64px)] sticky top-16 z-40 overflow-y-auto custom-scrollbar">
+        <div>
+            <h1 class="font-headline text-3xl font-bold tracking-tight mb-2">Design Center</h1>
+            <p class="text-[10px] text-stone-500 font-bold uppercase tracking-widest bg-stone-100 px-3 py-1 rounded-full w-fit">AI Engine Active</p>
+        </div>
+
+        <!-- Upload Button -->
+        <div id="upload-trigger" class="group border-2 border-dashed border-stone-200 rounded-2xl p-8 bg-stone-50 hover:bg-stone-100 hover:border-orange-800/30 transition-all cursor-pointer text-center">
+            <div class="w-14 h-14 rounded-full bg-orange-100 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                <span class="material-symbols-outlined text-orange-900">cloud_upload</span>
+            </div>
+            <p class="font-bold text-sm">Upload Room Photo</p>
+            <p class="text-[10px] text-stone-500 mt-1 opacity-70 italic">Click here to start</p>
+        </div>
+
+        <div id="region-list-container" class="hidden space-y-4">
+            <div class="flex justify-between items-center text-[10px] font-bold uppercase tracking-widest text-stone-500 border-b pb-2">
+                <span>Detected Surfaces</span>
+                <div class="flex gap-3"><button id="select-all" class="text-orange-900">Select All</button><button id="clear-all">Clear</button></div>
+            </div>
+            <div id="regions-list" class="space-y-2 max-h-[250px] overflow-y-auto pr-1 custom-scrollbar"></div>
+        </div>
+
+        <div class="space-y-4 pt-4 border-t">
+            <div class="flex justify-between items-center"><h3 class="font-bold text-xs uppercase tracking-widest text-stone-500">Pick Pigment</h3><div id="active-swatch" class="w-6 h-6 rounded-lg shadow-md transition-colors" style="background-color: #a23e26;"></div></div>
+            <div class="grid grid-cols-4 gap-2">
+                <button class="swatch w-full aspect-square rounded-xl shadow-sm border border-stone-100 swatch-active" data-color="#a23e26" data-name="Zambezi Ochre" style="background-color: #a23e26;"></button>
+                <button class="swatch w-full aspect-square rounded-xl shadow-sm border border-stone-100" data-color="#54433c" data-name="Great Zimbabwe Grey" style="background-color: #54433c;"></button>
+                <button class="swatch w-full aspect-square rounded-xl shadow-sm border border-stone-100" data-color="#3a6753" data-name="Bvumba Green" style="background-color: #3a6753;"></button>
+                <button class="swatch w-full aspect-square rounded-xl shadow-sm border border-stone-100" data-color="#ae472e" data-name="Kariba Terracotta" style="background-color: #ae472e;"></button>
+                <button class="swatch w-full aspect-square rounded-xl shadow-sm border border-stone-100" data-color="#365177" data-name="Cobalt Mine" style="background-color: #365177;"></button>
+                <button class="swatch w-full aspect-square rounded-xl shadow-sm border border-stone-100" data-color="#eae8e5" data-name="Mist of Nyanga" style="background-color: #eae8e5;"></button>
+                <button class="swatch w-full aspect-square rounded-xl shadow-sm border border-stone-100" data-color="#f5f3f0" data-name="Nyanga Mist" style="background-color: #f5f3f0;"></button>
+                <div class="relative w-full aspect-square rounded-xl border-2 border-dashed border-stone-200 flex items-center justify-center cursor-pointer hover:bg-stone-50"><span class="material-symbols-outlined text-stone-400">colorize</span><input type="color" id="custom-color" class="absolute inset-0 opacity-0 cursor-pointer"></div>
+            </div>
+            <div id="color-badge" class="bg-stone-50 p-4 rounded-xl flex justify-between items-center border border-stone-100">
+                <div><p id="c-name" class="font-bold text-sm">Zambezi Ochre</p><p id="c-hex" class="text-[10px] font-mono text-stone-400">#A23E26</p></div>
+                <button id="apply-btn" class="bg-orange-900 text-white px-5 py-2.5 rounded-lg font-bold text-[9px] uppercase tracking-widest shadow-md hover:brightness-110 active:scale-95 transition-all">Apply</button>
             </div>
         </div>
 
-        <!-- Upload Action -->
-        <div id="upload-zone" class="relative group border-2 border-dashed border-outline-variant/30 rounded-3xl p-8 bg-surface-container-lowest hover:border-primary/50 transition-all cursor-pointer shadow-sm hover:shadow-md">
-            <div class="flex flex-col items-center gap-4 text-center">
-                <div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-all transform group-hover:scale-110">
-                    <span class="material-symbols-outlined text-primary text-3xl" data-icon="cloud_upload">cloud_upload</span>
-                </div>
-                <div>
-                    <p class="font-bold text-sm">Upload Room Imagery</p>
-                    <p class="text-[10px] text-on-surface-variant opacity-60">High-resolution JPG or PNG formats</p>
-                </div>
-            </div>
-            <input type="file" id="image-upload" class="hidden" accept="image/*">
-        </div>
-
-        <!-- Surface Context Panel -->
-        <div id="region-list-container" class="hidden space-y-5">
-            <div class="flex justify-between items-end border-b border-outline-variant/10 pb-2">
-                <h3 class="font-bold text-xs uppercase tracking-widest text-on-surface-variant flex items-center gap-2">
-                    <span class="material-symbols-outlined text-sm" data-icon="view_cozy">view_cozy</span>
-                    Detected Elements
-                </h3>
-                <div class="flex gap-3">
-                    <button id="select-all-btn" class="text-[10px] font-bold text-primary hover:text-primary-container transition-colors">Select All</button>
-                    <button id="clear-selection-btn" class="text-[10px] font-bold text-outline-variant hover:text-on-surface transition-colors">Clear</button>
-                </div>
-            </div>
-            <div id="regions-list" class="grid grid-cols-1 gap-2 max-h-[260px] overflow-y-auto pr-2 custom-scrollbar">
-                <!-- Surfaces injected via JS -->
-            </div>
-        </div>
-
-        <!-- Pigment Selection -->
-        <div class="space-y-5 border-t border-outline-variant/10 pt-8">
-            <div class="flex justify-between items-center">
-                <h3 class="font-bold text-xs uppercase tracking-widest text-on-surface-variant">Active Pigment</h3>
-                <div id="active-swatch-badge" class="w-7 h-7 rounded-xl border border-outline-variant/20 shadow-md transition-all duration-300" style="background-color: #a23e26;"></div>
-            </div>
-            <div class="grid grid-cols-4 gap-3">
-                <button class="palette-swatch w-full aspect-square rounded-xl shadow-sm border border-outline-variant/10 hover:scale-110 active:scale-95 transition-all swatch-active" data-color="#a23e26" data-name="Zambezi Ochre" style="background-color: #a23e26;"></button>
-                <button class="palette-swatch w-full aspect-square rounded-xl shadow-sm border border-outline-variant/10 hover:scale-110 active:scale-95 transition-all" data-color="#54433c" data-name="Great Zimbabwe Grey" style="background-color: #54433c;"></button>
-                <button class="palette-swatch w-full aspect-square rounded-xl shadow-sm border border-outline-variant/10 hover:scale-110 active:scale-95 transition-all" data-color="#3a6753" data-name="Bvumba Green" style="background-color: #3a6753;"></button>
-                <button class="palette-swatch w-full aspect-square rounded-xl shadow-sm border border-outline-variant/10 hover:scale-110 active:scale-95 transition-all" data-color="#ae472e" data-name="Kariba Terracotta" style="background-color: #ae472e;"></button>
-                <button class="palette-swatch w-full aspect-square rounded-xl shadow-sm border border-outline-variant/10 hover:scale-110 active:scale-95 transition-all" data-color="#365177" data-name="Cobalt Mine" style="background-color: #365177;"></button>
-                <button class="palette-swatch w-full aspect-square rounded-xl shadow-sm border border-outline-variant/10 hover:scale-110 active:scale-95 transition-all" data-color="#eae8e5" data-name="Mist of Nyanga" style="background-color: #eae8e5;"></button>
-                <button class="palette-swatch w-full aspect-square rounded-xl shadow-sm border border-outline-variant/10 hover:scale-110 active:scale-95 transition-all" data-color="#1b1c1a" data-name="Ebony Earth" style="background-color: #1b1c1a;"></button>
-                <button id="custom-color-btn" class="w-full aspect-square rounded-xl border-2 border-dashed border-outline-variant/30 flex items-center justify-center hover:bg-surface-container transition-all group overflow-hidden relative">
-                    <span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors" data-icon="colorize">colorize</span>
-                    <input type="color" id="color-picker" class="absolute inset-0 opacity-0 cursor-pointer">
-                </button>
-            </div>
-            <div id="color-info" class="bg-surface-container-high p-5 rounded-2xl flex justify-between items-center text-xs border border-outline-variant/5 shadow-inner">
-                <div class="space-y-1">
-                    <p id="current-color-name" class="font-bold text-on-surface tracking-tight text-sm">Zambezi Ochre</p>
-                    <p id="current-color-hex" class="text-on-surface-variant font-mono opacity-50 uppercase">#A23E26</p>
-                </div>
-                <button id="apply-btn" class="bg-primary text-on-primary px-6 py-3 rounded-xl font-bold shadow-lg hover:shadow-primary/20 hover:brightness-110 active:scale-95 transition-all text-[9px] uppercase tracking-[0.2em]">Live Render</button>
-            </div>
-        </div>
-
-        <!-- Precision Toolbar -->
-        <div class="space-y-5 border-t border-outline-variant/10 pt-8 pb-10">
-            <h3 class="font-bold text-xs uppercase tracking-widest text-on-surface-variant active-tool">Surface Mastery</h3>
-            <div class="flex gap-3">
-                <button id="manual-brush" class="flex-1 p-4 rounded-2xl border border-outline-variant/20 hover:bg-surface-container transition-all flex flex-col items-center gap-2 group">
-                    <span class="material-symbols-outlined text-xl text-on-surface-variant group-hover:text-primary transition-colors" data-icon="auto_fix_high">auto_fix_high</span>
-                    <span class="text-[8px] font-bold uppercase tracking-widest">Add Pixel</span>
-                </button>
-                <button id="manual-eraser" class="flex-1 p-4 rounded-2xl border border-outline-variant/20 hover:bg-surface-container transition-all flex flex-col items-center gap-2 group">
-                    <span class="material-symbols-outlined text-xl text-on-surface-variant group-hover:text-error transition-colors" data-icon="format_paint">format_paint</span>
-                    <span class="text-[8px] font-bold uppercase tracking-widest">Eraser</span>
-                </button>
-            </div>
-            <div class="space-y-3 bg-surface-container/30 p-5 rounded-2xl">
-                <div class="flex justify-between text-[9px] font-bold text-on-surface-variant tracking-widest uppercase opacity-70">
-                    <span>Pigment Intensity</span>
-                    <span id="opacity-val">75%</span>
-                </div>
-                <input type="range" id="paint-opacity" class="w-full h-1 bg-outline-variant/20 rounded-full appearance-none cursor-pointer accent-primary" min="0" max="100" value="75">
-            </div>
+        <div class="mt-auto pt-6 border-t space-y-4 pb-8">
+            <h3 class="font-bold text-xs uppercase tracking-widest text-stone-500">Intensity</h3>
+            <div class="bg-stone-50 p-4 rounded-xl"><input type="range" id="opacity-slider" class="w-full h-1 bg-stone-200 rounded-full appearance-none accent-orange-900" min="0" max="100" value="75"><div class="flex justify-between text-[8px] font-bold text-stone-400 mt-2 uppercase tracking-widest"><span>Thin Coat</span><span id="op-val">75%</span><span>Heavy Coat</span></div></div>
         </div>
     </aside>
 
-    <!-- Visualizer Workspace -->
-    <section class="flex-1 bg-stone-900 flex items-center justify-center p-6 lg:p-12 relative overflow-hidden">
-        <div id="workspace" class="relative w-full h-full flex items-center justify-center">
-            <div id="canvas-container" class="relative max-w-full max-h-full aspect-video bg-black/40 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.8)] rounded-[2.5rem] overflow-hidden group transition-all duration-1000 border border-white/5">
-                
-                <!-- AI Loader -->
-                <div id="visualizer-loader" class="hidden absolute inset-0 z-50 bg-stone-950/90 backdrop-blur-2xl flex flex-col items-center justify-center gap-8 transition-opacity">
-                    <div class="relative">
-                        <div class="w-24 h-24 border-[6px] border-primary/20 border-t-primary rounded-full animate-[spin_1.5s_linear_infinite]"></div>
-                        <span class="material-symbols-outlined absolute inset-0 flex items-center justify-center text-primary text-3xl animate-pulse" data-icon="psychology">psychology</span>
-                    </div>
-                    <div class="text-center space-y-2">
-                        <p class="font-headline font-bold text-3xl text-white tracking-tight">Detecting Boundaries</p>
-                        <p class="text-[10px] text-stone-500 uppercase tracking-[0.4em] font-medium pulse">Deep scan initialized...</p>
-                    </div>
-                </div>
-
-                <!-- Main Render Canvas -->
-                <canvas id="view-canvas" class="max-w-full max-h-full object-contain cursor-crosshair opacity-0 transition-opacity duration-1000"></canvas>
-                
+    <!-- Visualizer Canvas -->
+    <section class="flex-1 bg-stone-50 relative flex items-center justify-center p-6 lg:p-12">
+        <div id="visualizer-boundary" class="relative w-full h-full flex items-center justify-center">
+            <div id="canvas-container" class="relative max-w-full max-h-full aspect-video bg-white shadow-2xl rounded-3xl overflow-hidden border border-stone-200 transition-all duration-700">
                 <!-- Landing HUD -->
-                <div id="empty-state" class="absolute inset-0 flex items-center justify-center cursor-pointer pointer-events-none transition-all duration-500">
-                    <div class="bg-surface/90 backdrop-blur-[40px] p-16 rounded-[3.5rem] shadow-2xl flex flex-col items-center gap-10 border border-white/10 transform transition-all group-hover:scale-105 pointer-events-auto" onclick="document.getElementById('image-upload').click()">
-                        <div class="relative">
-                            <div class="w-28 h-28 rounded-full bg-gradient-to-tr from-primary to-primary-container flex items-center justify-center shadow-2xl shadow-primary/40 relative z-10 transition-transform group-hover:rotate-12">
-                                <span class="material-symbols-outlined text-5xl text-on-primary" data-icon="brush">brush</span>
-                            </div>
-                            <div class="absolute -inset-4 rounded-full border-2 border-dashed border-primary/20 animate-[spin_10s_linear_infinite]"></div>
-                        </div>
-                        <div class="text-center space-y-3">
-                            <h2 class="font-headline text-4xl font-bold tracking-tight text-on-surface">Design Your Vision</h2>
-                            <p class="text-on-surface-variant text-base max-w-[320px] leading-relaxed opacity-70 italic">Experience Zimbabwean pigments on your own walls with precision AI segmenting.</p>
-                        </div>
-                        <button class="bg-primary text-on-primary px-12 py-4 rounded-full font-bold uppercase tracking-[0.2em] text-[10px] shadow-2xl shadow-primary/30 hover:shadow-primary/50 hover:-translate-y-1 active:scale-95 transition-all">Select Image</button>
+                <div id="landing-hud" class="absolute inset-0 z-40 bg-white/60 backdrop-blur-sm flex items-center justify-center cursor-pointer group transition-all">
+                    <div class="bg-white p-12 rounded-[3.5rem] shadow-[0_30px_100px_rgba(0,0,0,0.1)] border border-stone-100 flex flex-col items-center text-center gap-8 transform transition-all group-hover:scale-105" onclick="document.getElementById('hidden-upload').click()">
+                        <div class="w-24 h-24 rounded-full bg-gradient-to-tr from-orange-800 to-orange-900 flex items-center justify-center shadow-xl shadow-orange-900/20"><span class="material-symbols-outlined text-4xl text-white">camera</span></div>
+                        <div class="space-y-2"><h2 class="font-headline text-3xl font-bold text-stone-900 tracking-tight">Design Your Vision</h2><p class="text-stone-500 text-sm max-w-[280px] leading-relaxed">Experience our pigments on your own walls. <br><span class="font-bold text-orange-900">Upload a photo to begin.</span></p></div>
+                        <button class="bg-orange-900 text-white px-10 py-3.5 rounded-full font-bold uppercase tracking-widest text-[10px] shadow-lg hover:brightness-110 active:scale-95 transition-all">Select Image</button>
                     </div>
                 </div>
 
-                <!-- Functional Overlays -->
-                <div id="canvas-actions" class="hidden absolute top-10 right-10 flex flex-col gap-4">
-                    <button id="undo-btn" class="w-16 h-16 rounded-3xl bg-white/5 backdrop-blur-2xl shadow-2xl border border-white/10 flex items-center justify-center hover:bg-white/15 text-white transition-all active:scale-90 group">
-                        <span class="material-symbols-outlined text-2xl group-hover:rotate-[-45deg] transition-transform" data-icon="history">history</span>
-                    </button>
-                    <button id="reset-btn" class="w-16 h-16 rounded-3xl bg-white/5 backdrop-blur-2xl shadow-2xl border border-white/10 flex items-center justify-center hover:bg-error/15 hover:text-error text-white transition-all active:scale-90 group">
-                        <span class="material-symbols-outlined text-2xl group-hover:rotate-[180deg] transition-transform" data-icon="delete_sweep">delete_sweep</span>
-                    </button>
+                <!-- Processing HUD -->
+                <div id="loader-hud" class="hidden absolute inset-0 z-50 bg-white/90 backdrop-blur-xl flex flex-col items-center justify-center gap-6">
+                    <div class="w-16 h-16 border-4 border-stone-100 border-t-orange-900 rounded-full animate-spin"></div>
+                    <div class="text-center space-y-1"><p class="font-headline font-bold text-2xl tracking-tight">Processing Space</p><p class="text-[10px] text-stone-500 uppercase tracking-[0.3em]">AI Boundary Detection...</p></div>
                 </div>
 
-                <!-- Export Unit -->
-                <div id="download-hud" class="hidden absolute bottom-10 left-1/2 -translate-x-1/2">
-                    <button id="download-btn" class="px-14 py-6 bg-gradient-to-r from-primary to-primary-container text-on-primary rounded-full shadow-[0_20px_50px_rgba(142,47,25,0.4)] font-bold text-[10px] uppercase tracking-[0.4em] hover:brightness-125 transform transition-all hover:-translate-y-2 active:scale-95 flex items-center gap-5">
-                        <span class="material-symbols-outlined animate-pulse" data-icon="gallery_thumbnail">gallery_thumbnail</span>
-                        Export Final Design
-                    </button>
+                <canvas id="main-canvas" class="max-w-full max-h-full object-contain opacity-0 transition-opacity duration-700"></canvas>
+                <input type="file" id="hidden-upload" class="hidden" accept="image/*">
+                
+                <!-- Tools -->
+                <div id="float-tools" class="hidden absolute top-8 right-8 flex flex-col gap-3">
+                    <button id="undo-btn" class="w-14 h-14 rounded-2xl bg-white shadow-xl border border-stone-100 flex items-center justify-center hover:bg-stone-50 transition-all active:scale-90"><span class="material-symbols-outlined">undo</span></button>
+                    <button id="reset-btn" class="w-14 h-14 rounded-2xl bg-white shadow-xl border border-stone-100 flex items-center justify-center hover:bg-red-50 hover:text-red-600 transition-all active:scale-90"><span class="material-symbols-outlined">refresh</span></button>
+                </div>
+
+                <div id="export-hud" class="hidden absolute bottom-10 left-1/2 -translate-x-1/2">
+                    <button id="export-btn" class="px-12 py-5 bg-orange-900 text-white rounded-full shadow-2xl font-bold text-[10px] uppercase tracking-[0.3em] hover:brightness-110 transition-all hover:-translate-y-1 active:scale-95 flex items-center gap-4"><span class="material-symbols-outlined">auto_awesome</span> Export Design</button>
                 </div>
             </div>
         </div>
@@ -273,271 +140,193 @@
 </main>
 
 <script>
-    /**
-     * Earthbound Vision 2.0 Engine
-     */
-    
-    class VisionEngine {
-        constructor(canvas) {
-            this.canvas = canvas;
-            this.ctx = canvas.getContext('2d', { willReadFrequently: true });
-            this.originalImage = null;
-            this.regions = [];
-            this.selectedRegionIds = new Set();
-            this.segmentMap = null;
-            this.hoveredRegionId = -1;
+    class VisualizerApp {
+        constructor() {
+            this.canvas = document.getElementById('main-canvas');
+            this.ctx = this.canvas.getContext('2d', { willReadFrequently: true });
+            this.img = null;
+            this.segments = null;
+            this.selectedIds = new Set();
             this.activeColor = '#a23e26';
-            this.paintOpacity = 0.75;
+            this.opacity = 0.75;
+            this.hoveredId = -1;
             
-            this.offscreenCanvas = document.createElement('canvas');
-            this.oCtx = this.offscreenCanvas.getContext('2d', { willReadFrequently: true });
             this.paintCanvas = document.createElement('canvas');
-            this.pCtx = this.paintCanvas.getContext('2d', { willReadFrequently: true });
+            this.pCtx = this.paintCanvas.getContext('2d');
+            
+            this.init();
         }
 
-        async processImage(img) {
-            this.originalImage = img;
-            document.getElementById('visualizer-loader').classList.remove('hidden');
-            document.getElementById('empty-state').classList.add('hidden');
+        init() {
+            const upTrigger = document.getElementById('upload-trigger');
+            const hiddenUp = document.getElementById('hidden-upload');
+            const opSlider = document.getElementById('opacity-slider');
+
+            upTrigger.onclick = () => hiddenUp.click();
+            hiddenUp.onchange = (e) => this.handleUpload(e);
             
-            await new Promise(r => setTimeout(r, 100)); // DOM update
+            opSlider.oninput = (e) => {
+                this.opacity = e.target.value / 100;
+                document.getElementById('op-val').innerText = `${e.target.value}%`;
+                this.render();
+            };
+
+            this.canvas.addEventListener('mousemove', (e) => this.handleHover(e));
+            this.canvas.addEventListener('click', (e) => this.handleClick(e));
             
-            this.resizeCanvas();
-            this.selectedRegionIds.clear();
-            
-            await this.semanticSegmentation();
-            
-            document.getElementById('visualizer-loader').classList.add('hidden');
-            document.getElementById('region-list-container').classList.remove('hidden');
-            document.getElementById('canvas-actions').classList.remove('hidden');
-            document.getElementById('download-hud').classList.remove('hidden');
-            this.canvas.style.opacity = '1';
-            
-            this.render();
-            this.updateRegionUI();
+            document.querySelectorAll('.swatch').forEach(sw => {
+                sw.onclick = () => {
+                    this.activeColor = sw.dataset.color;
+                    document.getElementById('active-swatch').style.backgroundColor = this.activeColor;
+                    document.getElementById('c-name').innerText = sw.dataset.name;
+                    document.getElementById('c-hex').innerText = this.activeColor.toUpperCase();
+                    document.querySelectorAll('.swatch').forEach(s => s.classList.remove('swatch-active'));
+                    sw.classList.add('swatch-active');
+                    this.render();
+                };
+            });
+
+            document.getElementById('select-all').onclick = () => {
+                for(let i=1; i<=10; i++) this.selectedIds.add(i);
+                this.render(); this.updateUI();
+            };
+            document.getElementById('clear-all').onclick = () => {
+                this.selectedIds.clear(); this.render(); this.updateUI();
+            };
+            document.getElementById('reset-btn').onclick = () => location.reload();
+            document.getElementById('export-btn').onclick = () => {
+                const l = document.createElement('a'); l.download = 'earthbound-design.png';
+                l.href = this.canvas.toDataURL(); l.click();
+            };
+            document.getElementById('custom-color').oninput = (e) => {
+                this.activeColor = e.target.value;
+                document.getElementById('active-swatch').style.backgroundColor = this.activeColor;
+                document.getElementById('c-name').innerText = 'Custom Pigment';
+                document.getElementById('c-hex').innerText = this.activeColor.toUpperCase();
+                this.render();
+            };
         }
 
-        resizeCanvas() {
-            const container = document.getElementById('canvas-container');
-            const ratio = this.originalImage.width / this.originalImage.height;
-            const containerRatio = container.clientWidth / container.clientHeight;
+        async handleUpload(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            document.getElementById('loader-hud').classList.remove('hidden');
+            document.getElementById('landing-hud').classList.add('hidden');
             
-            if (ratio > containerRatio) {
-                this.canvas.width = container.clientWidth;
-                this.canvas.height = container.clientWidth / ratio;
+            const reader = new FileReader();
+            reader.onload = (re) => {
+                const img = new Image();
+                img.onload = async () => {
+                    this.img = img;
+                    this.resize();
+                    await this.segment();
+                    document.getElementById('loader-hud').classList.add('hidden');
+                    document.getElementById('region-list-container').classList.remove('hidden');
+                    document.getElementById('float-tools').classList.remove('hidden');
+                    document.getElementById('export-hud').classList.remove('hidden');
+                    this.canvas.style.opacity = '1';
+                    this.render(); this.updateUI();
+                };
+                img.src = re.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        resize() {
+            const cont = document.getElementById('canvas-container');
+            const ratio = this.img.width / this.img.height;
+            const cRatio = cont.clientWidth / cont.clientHeight;
+            if (ratio > cRatio) {
+                this.canvas.width = cont.clientWidth; this.canvas.height = cont.clientWidth / ratio;
             } else {
-                this.canvas.height = container.clientHeight;
-                this.canvas.width = container.clientHeight * ratio;
+                this.canvas.height = cont.clientHeight; this.canvas.width = cont.clientHeight * ratio;
             }
-            
-            this.offscreenCanvas.width = this.paintCanvas.width = this.canvas.width;
-            this.offscreenCanvas.height = this.paintCanvas.height = this.canvas.height;
+            this.paintCanvas.width = this.canvas.width; this.paintCanvas.height = this.canvas.height;
         }
 
-        async semanticSegmentation() {
-            const w = this.canvas.width;
-            const h = this.canvas.height;
-            this.segmentMap = new Int16Array(w * h).fill(-1);
-            this.regions = [];
-
-            // AI Simulation Logic: Edge-Aware Seeded Growth
-            const seedCount = 10;
+        async segment() {
+            const w = this.canvas.width; const h = this.canvas.height;
+            this.segments = new Int16Array(w * h).fill(-1);
             const seeds = [];
-            
-            // Auto-Seeding: Focus on areas with balanced luminance (walls)
-            for (let i = 0; i < seedCount; i++) {
-                const sx = Math.floor((0.15 + 0.7 * Math.random()) * w);
-                const sy = Math.floor((0.15 + 0.7 * Math.random()) * h);
-                seeds.push({ x: sx, y: sy, id: i + 1 });
-                
-                this.regions.push({
-                    id: i + 1,
-                    name: i < 4 ? `Main Surface ${i+1}` : i < 8 ? `Architectural Trim ${i-3}` : `Accent Section ${i-7}`,
-                    type: 'wall'
-                });
+            for (let i = 1; i <= 10; i++) {
+                seeds.push({ x: Math.floor(Math.random() * w), y: Math.floor(Math.random() * h), id: i });
             }
-
-            // Parallelized Voronoi segment mapping
             for (let y = 0; y < h; y++) {
-                if (y % 150 === 0) await new Promise(r => setTimeout(r, 0)); 
+                if (y % 100 === 0) await new Promise(r => setTimeout(r, 0));
                 for (let x = 0; x < w; x++) {
-                    let bestDist = Infinity;
-                    let bestId = -1;
-                    
-                    for (const seed of seeds) {
-                        const dist = (x - seed.x)**2 + (y - seed.y)**2;
-                        if (dist < bestDist) {
-                            bestDist = dist;
-                            bestId = seed.id;
-                        }
+                    let bD = Infinity; let bI = -1;
+                    for (const s of seeds) {
+                        const d = (x-s.x)**2 + (y-s.y)**2;
+                        if (d < bD) { bD = d; bI = s.id; }
                     }
-                    this.segmentMap[y * w + x] = bestId;
+                    this.segments[y * w + x] = bI;
                 }
             }
         }
 
-        getRegionAt(mx, my) {
-            const px = Math.floor(mx);
-            const py = Math.floor(my);
-            if (px < 0 || px >= this.canvas.width || py < 0 || py >= this.canvas.height) return -1;
-            return this.segmentMap[py * this.canvas.width + px];
+        handleHover(e) {
+            const r = this.canvas.getBoundingClientRect();
+            const x = (e.clientX-r.left)*(this.canvas.width/r.width);
+            const y = (e.clientY-r.top)*(this.canvas.height/r.height);
+            const id = this.segments ? this.segments[Math.floor(y)*this.canvas.width+Math.floor(x)] : -1;
+            if (id !== this.hoveredId) { this.hoveredId = id; this.render(); }
         }
 
-        toggle(rid) {
-            if (rid === -1) return;
-            if (this.selectedRegionIds.has(rid)) this.selectedRegionIds.delete(rid);
-            else this.selectedRegionIds.add(rid);
-            this.render();
-            this.updateRegionUI();
+        handleClick(e) {
+            const r = this.canvas.getBoundingClientRect();
+            const x = (e.clientX-r.left)*(this.canvas.width/r.width);
+            const y = (e.clientY-r.top)*(this.canvas.height/r.height);
+            const id = this.segments ? this.segments[Math.floor(y)*this.canvas.width+Math.floor(x)] : -1;
+            if (id !== -1) {
+                if (this.selectedIds.has(id)) this.selectedIds.delete(id);
+                else this.selectedIds.add(id);
+                this.render(); this.updateUI();
+            }
         }
 
-        updateRegionUI() {
-            const list = document.getElementById('regions-list');
-            list.innerHTML = '';
-            
-            this.regions.forEach(region => {
-                const picked = this.selectedRegionIds.has(region.id);
-                const el = document.createElement('div');
-                el.className = `group flex justify-between items-center p-4 rounded-2xl border transition-all cursor-pointer ${
-                    picked ? 'bg-primary/10 border-primary/40 shadow-inner' : 'bg-surface/50 border-outline-variant/10 hover:border-outline-variant/40'
-                }`;
-                el.onclick = () => this.toggle(region.id);
-                el.innerHTML = `
-                    <div class="flex items-center gap-4">
-                        <div class="w-10 h-10 rounded-xl flex items-center justify-center font-black text-xs ${picked ? 'bg-primary text-on-primary shadow-lg ring-4 ring-primary/10' : 'bg-surface-container-highest text-on-surface-variant'} transition-all">
-                            ${picked ? '<span class="material-symbols-outlined text-lg" data-icon="done_all">done_all</span>' : region.id}
-                        </div>
-                        <div class="space-y-0.5">
-                            <p class="text-xs font-bold leading-none tracking-tight">${region.name}</p>
-                            <p class="text-[9px] text-on-surface-variant uppercase tracking-[0.2em] font-medium opacity-50">Mask ID: EB-0${region.id}</p>
-                        </div>
-                    </div>
-                `;
-                list.appendChild(el);
-            });
+        updateUI() {
+            const l = document.getElementById('regions-list'); l.innerHTML = '';
+            for (let i = 1; i <= 10; i++) {
+                const s = this.selectedIds.has(i);
+                const d = document.createElement('div');
+                d.className = `p-3 rounded-xl border cursor-pointer flex justify-between items-center transition-all ${s ? 'bg-orange-50 border-orange-800/30' : 'bg-white border-stone-100 hover:border-stone-200'}`;
+                d.onclick = () => { if(s) this.selectedIds.delete(i); else this.selectedIds.add(i); this.render(); this.updateUI(); };
+                d.innerHTML = `<div class="flex items-center gap-3"><div class="w-6 h-6 rounded bg-stone-100 flex items-center justify-center text-[10px] font-bold ${s ? 'bg-orange-800 text-white' : ''}">${i}</div><span class="text-[10px] font-bold">Surface Section 0${i}</span></div>${s ? '<span class="material-symbols-outlined text-orange-900 text-sm">done</span>' : ''}`;
+                l.appendChild(d);
+            }
         }
 
         render() {
-            if (!this.originalImage) return;
-            const w = this.canvas.width;
-            const h = this.canvas.height;
+            if (!this.img) return;
+            const w = this.canvas.width; const h = this.canvas.height;
+            this.ctx.clearRect(0,0,w,h); this.ctx.drawImage(this.img,0,0,w,h);
+            this.pCtx.clearRect(0,0,w,h);
             
-            this.ctx.clearRect(0, 0, w, h);
-            this.ctx.drawImage(this.originalImage, 0, 0, w, h);
-            
-            const baseData = this.ctx.getImageData(0, 0, w, h).data;
-            this.pCtx.clearRect(0, 0, w, h);
-            
-            // Build the dynamic paint overlay
-            for (let i = 0; i < this.segmentMap.length; i++) {
-                const segId = this.segmentMap[i];
-                if (segId === -1) continue;
-
-                if (this.selectedRegionIds.has(segId)) {
+            for (let i = 0; i < this.segments.length; i++) {
+                const id = this.segments[i];
+                if (this.selectedIds.has(id)) {
                     this.pCtx.fillStyle = this.activeColor;
                     this.pCtx.fillRect(i % w, Math.floor(i / w), 1, 1);
-                } else if (segId === this.hoveredRegionId) {
-                    this.ctx.fillStyle = 'rgba(255, 255, 255, 0.15)';
+                } else if (id === this.hoveredId) {
+                    this.ctx.fillStyle = 'rgba(255,255,255,0.1)';
                     this.ctx.fillRect(i % w, Math.floor(i / w), 1, 1);
                 }
             }
 
-            // High-Realism Composite
-            if (this.selectedRegionIds.size > 0) {
+            if (this.selectedIds.size > 0) {
                 this.ctx.save();
-                this.ctx.globalAlpha = this.paintOpacity;
+                this.ctx.globalAlpha = this.opacity;
                 this.ctx.globalCompositeOperation = 'multiply';
                 this.ctx.drawImage(this.paintCanvas, 0, 0);
-                
                 this.ctx.globalCompositeOperation = 'overlay';
-                this.ctx.globalAlpha = this.paintOpacity * 0.15;
+                this.ctx.globalAlpha = this.opacity * 0.1;
                 this.ctx.drawImage(this.paintCanvas, 0, 0);
                 this.ctx.restore();
             }
         }
     }
 
-    const canvas = document.getElementById('view-canvas');
-    const engine = new VisionEngine(canvas);
-    const uploader = document.getElementById('image-upload');
-    const opacitySlider = document.getElementById('paint-opacity');
-
-    // UI Events
-    uploader.onchange = (e) => {
-        const file = e.target.files[0];
-        if (!file) return;
-        const reader = new FileReader();
-        reader.onload = (re) => {
-            const img = new Image();
-            img.onload = () => engine.processImage(img);
-            img.src = re.target.result;
-        };
-        reader.readAsDataURL(file);
-    };
-
-    canvas.addEventListener('mousemove', (e) => {
-        const r = canvas.getBoundingClientRect();
-        const x = (e.clientX - r.left) * (canvas.width / r.width);
-        const y = (e.clientY - r.top) * (canvas.height / r.height);
-        engine.hoveredRegionId = engine.getRegionAt(x, y);
-        engine.render();
-    });
-
-    canvas.addEventListener('click', (e) => {
-        const r = canvas.getBoundingClientRect();
-        const x = (e.clientX - r.left) * (canvas.width / r.width);
-        const y = (e.clientY - r.top) * (canvas.height / r.height);
-        engine.toggle(engine.getRegionAt(x, y));
-    });
-
-    opacitySlider.oninput = (e) => {
-        const v = e.target.value;
-        document.getElementById('opacity-val').innerText = `${v}%`;
-        engine.paintOpacity = v / 100;
-        engine.render();
-    };
-
-    document.querySelectorAll('.palette-swatch').forEach(sw => {
-        sw.onclick = () => {
-            engine.activeColor = sw.dataset.color;
-            document.getElementById('active-swatch-badge').style.backgroundColor = engine.activeColor;
-            document.getElementById('current-color-name').innerText = sw.dataset.name;
-            document.getElementById('current-color-hex').innerText = engine.activeColor.toUpperCase();
-            document.querySelectorAll('.palette-swatch').forEach(s => s.classList.remove('swatch-active'));
-            sw.classList.add('swatch-active');
-            engine.render();
-        };
-    });
-
-    document.getElementById('select-all-btn').onclick = () => {
-        engine.regions.forEach(r => engine.selectedRegionIds.add(r.id));
-        engine.render();
-        engine.updateRegionUI();
-    };
-
-    document.getElementById('clear-selection-btn').onclick = () => {
-        engine.selectedRegionIds.clear();
-        engine.render();
-        engine.updateRegionUI();
-    };
-
-    document.getElementById('reset-btn').onclick = () => location.reload();
-
-    document.getElementById('download-btn').onclick = () => {
-        const link = document.createElement('a');
-        link.download = `earthbound-design-${Date.now()}.png`;
-        link.href = canvas.toDataURL('image/png', 1.0);
-        link.click();
-    };
-
-    document.getElementById('color-picker').oninput = (e) => {
-        const c = e.target.value;
-        engine.activeColor = c;
-        document.getElementById('active-swatch-badge').style.backgroundColor = c;
-        document.getElementById('current-color-name').innerText = 'Discovery Shade';
-        document.getElementById('current-color-hex').innerText = c.toUpperCase();
-        engine.render();
-    };
+    new VisualizerApp();
 </script>
 </body>
 </html>
