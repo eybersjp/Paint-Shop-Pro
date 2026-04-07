@@ -7,7 +7,11 @@ import { useNavigate } from "react-router-dom";
 import { formatMoney, formatDateTime } from "@/lib/format";
 import { FileText, Users, ShoppingCart, AlertTriangle, Plus } from "lucide-react";
 
+import { useState } from "react";
+
 export default function Dashboard() {
+  const [masterKey, setMasterKey] = useState("");
+
   const { user, loading: authLoading } = useRequireAuth();
   const navigate = useNavigate();
 
@@ -231,16 +235,16 @@ export default function Dashboard() {
               <div className="flex gap-4">
                 <input 
                   type="password" 
-                  id="gemini-master-key"
+                  value={masterKey}
+                  onChange={(e) => setMasterKey(e.target.value)}
                   className="flex-1 bg-white/5 border border-white/10 rounded-xl px-5 h-12 text-sm text-stone-200 focus:ring-1 focus:ring-primary outline-none transition-all"
                   placeholder="Paste Master Gemini Key..."
                 />
                 <Button 
                   onClick={async () => {
-                    const key = (document.getElementById('gemini-master-key') as HTMLInputElement).value;
-                    const { error } = await supabase
+                    const { error } = await (supabase as any)
                       .from('system_settings')
-                      .upsert({ setting_key: 'gemini_api_key', setting_value: key }, { onConflict: 'setting_key' });
+                      .upsert({ setting_key: 'gemini_api_key', setting_value: masterKey }, { onConflict: 'setting_key' });
                     if (error) alert('Error saving Gemini key'); else alert('Gemini Key Synced');
                   }}
                   className="rounded-xl px-8 h-12 font-bold"
