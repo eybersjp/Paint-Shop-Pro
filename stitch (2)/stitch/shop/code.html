@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Manrope:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed": "#bcedd4",
+                    "secondary-container": "#baebd1",
+                    "surface-bright": "#fbf9f6",
+                    "inverse-on-surface": "#f2f0ed",
+                    "on-error-container": "#93000a",
+                    "on-primary": "#ffffff",
+                    "surface-container-high": "#eae8e5",
+                    "on-secondary-container": "#3e6b57",
+                    "surface-container-highest": "#e4e2df",
+                    "tertiary-fixed": "#d5e3ff",
+                    "surface-variant": "#e4e2df",
+                    "on-tertiary-container": "#dde8ff",
+                    "on-error": "#ffffff",
+                    "on-primary-fixed": "#3d0700",
+                    "surface": "#fbf9f6",
+                    "on-secondary-fixed-variant": "#214f3d",
+                    "on-surface-variant": "#54433c",
+                    "inverse-primary": "#ffb4a3",
+                    "secondary": "#3a6753",
+                    "primary-fixed": "#ffdad2",
+                    "on-tertiary-fixed-variant": "#2d486d",
+                    "outline": "#87736b",
+                    "tertiary-fixed-dim": "#adc8f5",
+                    "error": "#ba1a1a",
+                    "on-tertiary": "#ffffff",
+                    "inverse-surface": "#30312f",
+                    "on-secondary-fixed": "#002115",
+                    "on-surface": "#1b1c1a",
+                    "on-background": "#1b1c1a",
+                    "on-secondary": "#ffffff",
+                    "surface-container-low": "#f5f3f0",
+                    "tertiary-container": "#4f6991",
+                    "on-primary-fixed-variant": "#822711",
+                    "on-tertiary-fixed": "#001c3b",
+                    "primary-fixed-dim": "#ffb4a3",
+                    "secondary-fixed-dim": "#a1d1b9",
+                    "surface-tint": "#a23e26",
+                    "tertiary": "#365177",
+                    "surface-dim": "#dbdad7",
+                    "primary-container": "#ae472e",
+                    "surface-container": "#efeeeb",
+                    "primary": "#8e2f19",
+                    "outline-variant": "#dac1b8",
+                    "surface-container-lowest": "#ffffff",
+                    "background": "#fbf9f6",
+                    "on-primary-container": "#ffe1da",
+                    "error-container": "#ffdad6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Space Grotesk"],
+                    "body": ["Manrope"],
+                    "label": ["Manrope"]
+            }
+          },
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopAppBar -->
+<nav class="fixed top-0 w-full z-50 bg-stone-50/70 dark:bg-stone-900/70 backdrop-blur-md shadow-sm dark:shadow-none transition-colors duration-200">
+<div class="flex justify-between items-center px-8 py-4 max-w-full mx-auto">
+<div class="flex items-center gap-12">
+<a class="text-2xl font-bold text-orange-900 dark:text-orange-100 font-headline tracking-tight" href="#">Earthbound Studio</a>
+<div class="hidden md:flex items-center gap-8 font-label">
+<a class="text-orange-800 dark:text-orange-300 border-b-2 border-orange-800 dark:border-orange-300 pb-1 transition-colors duration-200" href="#">Shop</a>
+<a class="text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors duration-200" href="#">Visualizer</a>
+<a class="text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors duration-200" href="#">Collections</a>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative hidden lg:block group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="bg-surface-container-low border-none rounded-full py-2 pl-10 pr-4 text-sm w-64 focus:ring-2 focus:ring-primary-container placeholder:text-outline transition-all" placeholder="Find your shade..." type="text"/>
+</div>
+<button class="p-2 transition-colors duration-200 hover:bg-stone-100/50 dark:hover:bg-stone-800/50 rounded-full scale-95 active:duration-75">
+<span class="material-symbols-outlined text-orange-900 dark:text-orange-200" data-icon="shopping_cart">shopping_cart</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-surface-container-high overflow-hidden">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="Close-up portrait of a professional man with a neutral expression in high-key soft studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDLWWUvymtekS_ouvE5bdiWp1-t8MiWiwikYixiPUTOlmK99athnccebcc80BqGqO3zaLiY494ZPNCwXoUdHATysrAOPELKkI3ZQt3L47FpHNet94HIBZkLucTCkn-rE4KGHJwo2gakorDM6PiXv_ADq8gKbAOZ_8V1suKANm7qcjRC42jXQIEHvwKpa6GPHsYdbnKS_7ZiL3X5EyJKidgZMdjBps12KSvltCTlvSaJ3YHIetKbEqW24GCgX9jkiEyV31Qqqwrow"/>
+</div>
+</div>
+</div>
+</nav>
+<main class="pt-24 pb-16 px-8 max-w-screen-2xl mx-auto">
+<!-- Breadcrumb & Header -->
+<header class="mb-12">
+<nav class="flex items-center gap-2 text-label-sm text-on-surface-variant mb-4">
+<a class="hover:text-primary transition-colors" href="#">Home</a>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+<span class="font-semibold text-on-surface">Shop</span>
+</nav>
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<h1 class="text-6xl md:text-8xl font-headline font-bold tracking-tighter text-on-surface mb-2">All Paints</h1>
+<p class="text-lg text-on-surface-variant max-w-xl font-light">Explore our curated range of artisanal finishes, from Zimbabwean ochres to industrial minerals. Architectural quality, earthbound soul.</p>
+</div>
+<div class="flex items-center gap-4">
+<span class="text-sm font-label uppercase tracking-widest text-outline">Sort by</span>
+<div class="relative group">
+<button class="flex items-center gap-2 border-b border-outline-variant pb-1 font-medium hover:border-primary transition-colors">
+<span>Featured</span>
+<span class="material-symbols-outlined">expand_more</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<div class="flex flex-col lg:flex-row gap-12">
+<!-- Sidebar Filters -->
+<aside class="w-full lg:w-72 flex-shrink-0">
+<div class="sticky top-24 space-y-10">
+<div>
+<h3 class="text-sm font-headline font-bold uppercase tracking-[0.2em] mb-6 text-primary">Paint Type</h3>
+<ul class="space-y-3 font-label text-sm">
+<li class="flex items-center justify-between group cursor-pointer">
+<span class="group-hover:text-primary transition-colors">Architectural Matte</span>
+<span class="text-outline text-xs">12</span>
+</li>
+<li class="flex items-center justify-between group cursor-pointer">
+<span class="group-hover:text-primary transition-colors">Industrial Satin</span>
+<span class="text-outline text-xs">08</span>
+</li>
+<li class="flex items-center justify-between group cursor-pointer">
+<span class="group-hover:text-primary transition-colors">Raw Ochre Wash</span>
+<span class="text-outline text-xs">15</span>
+</li>
+<li class="flex items-center justify-between group cursor-pointer">
+<span class="group-hover:text-primary transition-colors">Mineral Limewash</span>
+<span class="text-outline text-xs">06</span>
+</li>
+</ul>
+</div>
+<div>
+<h3 class="text-sm font-headline font-bold uppercase tracking-[0.2em] mb-6 text-primary">Color Family</h3>
+<div class="grid grid-cols-5 gap-3">
+<button class="w-8 h-8 rounded-full bg-orange-900 border-2 border-transparent hover:border-outline transition-all" title="Terracotta"></button>
+<button class="w-8 h-8 rounded-full bg-[#3a6753] border-2 border-transparent hover:border-outline transition-all" title="Forest"></button>
+<button class="w-8 h-8 rounded-full bg-[#365177] border-2 border-transparent hover:border-outline transition-all" title="Mineral"></button>
+<button class="w-8 h-8 rounded-full bg-[#f5f3f0] border-2 border-outline-variant hover:border-outline transition-all" title="Bone"></button>
+<button class="w-8 h-8 rounded-full bg-[#54433c] border-2 border-transparent hover:border-outline transition-all" title="Umber"></button>
+<button class="w-8 h-8 rounded-full bg-[#8e2f19] border-2 border-transparent hover:border-outline transition-all" title="Oxide"></button>
+<button class="w-8 h-8 rounded-full bg-[#dac1b8] border-2 border-transparent hover:border-outline transition-all" title="Sand"></button>
+</div>
+</div>
+<div>
+<h3 class="text-sm font-headline font-bold uppercase tracking-[0.2em] mb-6 text-primary">Finish</h3>
+<div class="space-y-4">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded-sm border-outline-variant text-primary focus:ring-primary w-5 h-5" type="checkbox"/>
+<span class="text-sm font-label group-hover:text-primary transition-colors">Ultra Matte</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded-sm border-outline-variant text-primary focus:ring-primary w-5 h-5" type="checkbox"/>
+<span class="text-sm font-label group-hover:text-primary transition-colors">Eggshell Shell</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded-sm border-outline-variant text-primary focus:ring-primary w-5 h-5" type="checkbox"/>
+<span class="text-sm font-label group-hover:text-primary transition-colors">High Gloss Mineral</span>
+</label>
+</div>
+</div>
+<div>
+<h3 class="text-sm font-headline font-bold uppercase tracking-[0.2em] mb-6 text-primary">Surface</h3>
+<div class="flex flex-wrap gap-2">
+<button class="px-4 py-1.5 rounded-full bg-surface-container-high text-xs font-label hover:bg-primary hover:text-on-primary transition-all">Interior Masonry</button>
+<button class="px-4 py-1.5 rounded-full bg-surface-container-high text-xs font-label hover:bg-primary hover:text-on-primary transition-all">Wood &amp; Joinery</button>
+<button class="px-4 py-1.5 rounded-full bg-surface-container-high text-xs font-label hover:bg-primary hover:text-on-primary transition-all">Metal Work</button>
+</div>
+</div>
+</div>
+</aside>
+<!-- Product Grid -->
+<section class="flex-grow">
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-8 gap-y-16">
+<!-- Product Card 1 -->
+<div class="group">
+<div class="relative aspect-[4/5] bg-surface-container-low overflow-hidden mb-6">
+<img alt="Paint Can" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Modern minimal paint can standing on a rustic wooden table with soft morning sunlight casting long shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1GbNTiwetfPcpy4c8SuzPsv0G7PJqy8kBEkgWJv2lSK_806bdw9RdJ07kM33D3h13WX66-s1Qn3I02D7PfLOqjLQXhFuZJAevoDXZKh5LrLgHRHtuT4bWLMtmx79nRSM8L3GyvEDXTwVqt8f0o3Q-byIEmc-SrPftEZveaFfP3xZS1yCU2sJIGqcltaX7tXKm3m6nQUFFIswciFmCjRJPmQSuS8YkBMBG7322yb9J5iHqg08AedrXoXx7QrS64j7xWIkTb-KjHA"/>
+<button class="absolute bottom-4 right-4 bg-primary text-on-primary px-6 py-3 font-label text-xs tracking-widest uppercase rounded-lg opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">add_shopping_cart</span>
+                                Add to Cart
+                            </button>
+<div class="absolute top-4 left-4">
+<span class="bg-white/80 backdrop-blur px-3 py-1 text-[10px] font-bold tracking-tighter uppercase">Zimbabwean Series</span>
+</div>
+</div>
+<div class="space-y-3">
+<div class="flex justify-between items-start">
+<h3 class="text-xl font-headline font-semibold text-on-surface leading-tight">Victoria Falls Mist</h3>
+<span class="text-lg font-headline font-light">$58.00</span>
+</div>
+<p class="text-sm text-on-surface-variant font-light">Architectural Matte • Water-based mineral finish with cool grey undertones.</p>
+<div class="flex gap-2 py-1">
+<div class="w-4 h-4 rounded-full bg-stone-300 ring-1 ring-offset-2 ring-primary"></div>
+<div class="w-4 h-4 rounded-full bg-stone-400"></div>
+<div class="w-4 h-4 rounded-full bg-stone-200"></div>
+</div>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="group">
+<div class="relative aspect-[4/5] bg-surface-container-low overflow-hidden mb-6">
+<img alt="Paint Splatter" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A thick stroke of deep terracotta paint applied to a raw concrete wall showing rich texture and matte finish" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWEyNzTTPRNPtgF5VgAiet3SvTGoilcX4Wqcl-JpF9dsoDlgW0NSzMqI92Q7ePLM_QPR7uM2TK-kEvSDWVkEiOVctss7p2sNGeRQ_veDLe4vcbQs__TVVmcktOfy1sd2PrN-NBMZfxBj8SVjl1plIA8V0BFEb_Mpj4tvdspdGD_FicohuMQeJuCbRXlwx_5B2-PMJt9C__Z0543xAzfcdvWpgh0lOGKAFxQzdl8tgdKp9QKPbr2wct-KPtBA7DJR9SNTMyH0WIeg"/>
+<button class="absolute bottom-4 right-4 bg-primary text-on-primary px-6 py-3 font-label text-xs tracking-widest uppercase rounded-lg opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">add_shopping_cart</span>
+                                Add to Cart
+                            </button>
+</div>
+<div class="space-y-3">
+<div class="flex justify-between items-start">
+<h3 class="text-xl font-headline font-semibold text-on-surface leading-tight">Great Zimbabwe Ochre</h3>
+<span class="text-lg font-headline font-light">$64.00</span>
+</div>
+<p class="text-sm text-on-surface-variant font-light">Raw Ochre Wash • Deep, earthy red derived from local iron-rich minerals.</p>
+<div class="flex gap-2 py-1">
+<div class="w-4 h-4 rounded-full bg-orange-900 ring-1 ring-offset-2 ring-primary"></div>
+<div class="w-4 h-4 rounded-full bg-orange-800"></div>
+</div>
+</div>
+</div>
+<!-- Product Card 3 -->
+<div class="group">
+<div class="relative aspect-[4/5] bg-surface-container-low overflow-hidden mb-6">
+<img alt="Interior Scene" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Spacious interior living room with high ceilings painted in a soft olive green mineral finish, minimalist furniture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcVFyWDYtqzwq4HjfqTsMrwP9awF3sYzQmqhUIQ_-ZlI-4K0cLqNw9XSCpVo9WRBZ96VHGwFb6VYklU86wPtKfK7bOgWXhossUO83iApCbptE_gK8U4Ya87dHXy3K2b8SvPfB3X4eRV1yanL7d0tpHweeMoyBMDMhVyCBqJqsVTGAolUjRvM-hnhEgIibEPYvy3cHJGg2f2aFJbSrot83pEjTQlGuPM5Gr24jpPwqopf3qPnx9Bwt1zHH44G_esACc0A_At1CE7A"/>
+<button class="absolute bottom-4 right-4 bg-primary text-on-primary px-6 py-3 font-label text-xs tracking-widest uppercase rounded-lg opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">add_shopping_cart</span>
+                                Add to Cart
+                            </button>
+</div>
+<div class="space-y-3">
+<div class="flex justify-between items-start">
+<h3 class="text-xl font-headline font-semibold text-on-surface leading-tight">Eastern Highlands Moss</h3>
+<span class="text-lg font-headline font-light">$62.00</span>
+</div>
+<p class="text-sm text-on-surface-variant font-light">Mineral Limewash • Sophisticated olive-green with a velvety tactile depth.</p>
+<div class="flex gap-2 py-1">
+<div class="w-4 h-4 rounded-full bg-secondary ring-1 ring-offset-2 ring-primary"></div>
+<div class="w-4 h-4 rounded-full bg-[#4a7763]"></div>
+</div>
+</div>
+</div>
+<!-- Product Card 4 -->
+<div class="group">
+<div class="relative aspect-[4/5] bg-surface-container-low overflow-hidden mb-6">
+<img alt="Paint texture" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Abstract macro photography of wet cobalt blue paint mixing with white swirls in a rhythmic pattern" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgyXYz4dticzO96J_e71FrsrlEbvikAlQuIwwXjQhn5-Rqc2X8gmmn9-Nl8RVUY91SlXddvJnUrhyufps0YkWigEflxnooDheJcBexmptmesrm5vNomrTqpanGJSh7ALjzEFDno6_Md5P9rdi319YqZ1AKSvCYofG1jsQQFxNhU4UxVx7HTC1ruRc1ttdl-vOn1jUtBVO-ICOsWQsiuDI5Ulg15xXDqZI5THtHxuekNnbMzBmz2rBmymbXvPASK-XC2Y25i6JxVg"/>
+<button class="absolute bottom-4 right-4 bg-primary text-on-primary px-6 py-3 font-label text-xs tracking-widest uppercase rounded-lg opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">add_shopping_cart</span>
+                                Add to Cart
+                            </button>
+</div>
+<div class="space-y-3">
+<div class="flex justify-between items-start">
+<h3 class="text-xl font-headline font-semibold text-on-surface leading-tight">Kariba Cobalt</h3>
+<span class="text-lg font-headline font-light">$70.00</span>
+</div>
+<p class="text-sm text-on-surface-variant font-light">Industrial Satin • Deep reflective blue for high-impact metal and masonry.</p>
+<div class="flex gap-2 py-1">
+<div class="w-4 h-4 rounded-full bg-tertiary ring-1 ring-offset-2 ring-primary"></div>
+<div class="w-4 h-4 rounded-full bg-slate-700"></div>
+</div>
+</div>
+</div>
+<!-- Product Card 5 -->
+<div class="group">
+<div class="relative aspect-[4/5] bg-surface-container-low overflow-hidden mb-6">
+<img alt="Detail shot" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Detailed close-up of a textured beige wall with natural light hitting it, highlighting the mineral grains of the paint" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtXvkQDut4yhJHlqAJD_sVk6CkWXVUA_P9JIwcG1S19a5EZvhmfC1DBymqLPIFvPy2mRVOkbbLFwKH1bGM2_5edftlV4PRa5g1rCpymG_eHKQRUT8-swkebuyOSIMlcd8_KZ6-8doYYYZtlpqxEPnCoED_ipslBFu4zN9vJ2pTTjzJsEaVFlVYjR2orYtlOS5I1OHrHU_C-i7GWjXL5FUGOWdAnZLG50v4zHSedpDVL2L1dJJhEHRk5a66Xn0dsQQxqEvAy3-6AA"/>
+<button class="absolute bottom-4 right-4 bg-primary text-on-primary px-6 py-3 font-label text-xs tracking-widest uppercase rounded-lg opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">add_shopping_cart</span>
+                                Add to Cart
+                            </button>
+</div>
+<div class="space-y-3">
+<div class="flex justify-between items-start">
+<h3 class="text-xl font-headline font-semibold text-on-surface leading-tight">Savanna Bone</h3>
+<span class="text-lg font-headline font-light">$54.00</span>
+</div>
+<p class="text-sm text-on-surface-variant font-light">Architectural Matte • Warm, sun-bleached neutral for light-filled rooms.</p>
+<div class="flex gap-2 py-1">
+<div class="w-4 h-4 rounded-full bg-surface-container-high ring-1 ring-offset-2 ring-primary"></div>
+<div class="w-4 h-4 rounded-full bg-white"></div>
+</div>
+</div>
+</div>
+<!-- Product Card 6 -->
+<div class="group">
+<div class="relative aspect-[4/5] bg-surface-container-low overflow-hidden mb-6">
+<img alt="Raw Materials" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Overhead view of various mineral pigments in small ceramic bowls, rich reds and deep yellows, artisan studio setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCuzDU4lpDmlPzKbAlk87J3-hgRcOJo1R1dT6lfuWvXCa8wtQHkZKAXkmFvCHOCrWD5X21uJaAr23iv0VTmT1HW3GvrPjayDQwP2a4nroZ7Ghgu-ph0zOvNMwjbjFMK2-ToLfnDFRLXoiUbLKYzP5upSfY44ZuQvZNtGxi5jX-meJmwACEW9vJD8TtM-VyUXt192oPC1zx8CtPahYQT5jXgy8a2M7ECSif7DQRp6I_nRia7mLKVQ8h-FjUG5UhSujC8j2cFXSMsNQ"/>
+<button class="absolute bottom-4 right-4 bg-primary text-on-primary px-6 py-3 font-label text-xs tracking-widest uppercase rounded-lg opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">add_shopping_cart</span>
+                                Add to Cart
+                            </button>
+</div>
+<div class="space-y-3">
+<div class="flex justify-between items-start">
+<h3 class="text-xl font-headline font-semibold text-on-surface leading-tight">Lundi Clay</h3>
+<span class="text-lg font-headline font-light">$59.00</span>
+</div>
+<p class="text-sm text-on-surface-variant font-light">Mineral Limewash • A balanced, pinkish terracotta inspired by riverbed silt.</p>
+<div class="flex gap-2 py-1">
+<div class="w-4 h-4 rounded-full bg-outline-variant ring-1 ring-offset-2 ring-primary"></div>
+<div class="w-4 h-4 rounded-full bg-orange-200"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination -->
+<div class="mt-20 flex justify-center items-center gap-8">
+<button class="w-12 h-12 flex items-center justify-center rounded-full border border-outline-variant text-on-surface hover:bg-surface-container transition-colors disabled:opacity-30" disabled="">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div class="flex items-center gap-6 font-headline font-bold">
+<span class="text-primary border-b-2 border-primary">01</span>
+<span class="text-outline cursor-pointer hover:text-on-surface">02</span>
+<span class="text-outline cursor-pointer hover:text-on-surface">03</span>
+<span class="text-outline">...</span>
+<span class="text-outline cursor-pointer hover:text-on-surface">12</span>
+</div>
+<button class="w-12 h-12 flex items-center justify-center rounded-full border border-outline-variant text-on-surface hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full border-t border-stone-200 dark:border-stone-800 bg-stone-100 dark:bg-stone-950 mt-12">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 px-12 py-16 w-full max-w-screen-2xl mx-auto">
+<div class="space-y-4">
+<h2 class="text-lg font-bold text-orange-950 dark:text-orange-50 font-headline uppercase tracking-widest">Earthbound Studio</h2>
+<p class="text-stone-500 dark:text-stone-400 font-body text-sm leading-relaxed">
+                    Zimbabwean-born architectural coatings. Rooted in the landscape, refined for the modern world.
+                </p>
+</div>
+<div>
+<h4 class="font-headline font-bold text-sm uppercase tracking-widest mb-6 text-orange-900 dark:text-orange-200">Company</h4>
+<ul class="space-y-3">
+<li><a class="text-stone-500 dark:text-stone-400 font-label text-sm hover:text-orange-700 dark:hover:text-orange-300 underline-offset-4 transition-all opacity-80 hover:opacity-100" href="#">Sustainability</a></li>
+<li><a class="text-stone-500 dark:text-stone-400 font-label text-sm hover:text-orange-700 dark:hover:text-orange-300 underline-offset-4 transition-all opacity-80 hover:opacity-100" href="#">Terms of Service</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-headline font-bold text-sm uppercase tracking-widest mb-6 text-orange-900 dark:text-orange-200">Service</h4>
+<ul class="space-y-3">
+<li><a class="text-stone-500 dark:text-stone-400 font-label text-sm hover:text-orange-700 dark:hover:text-orange-300 underline-offset-4 transition-all opacity-80 hover:opacity-100" href="#">Contact Us</a></li>
+<li><a class="text-stone-500 dark:text-stone-400 font-label text-sm hover:text-orange-700 dark:hover:text-orange-300 underline-offset-4 transition-all opacity-80 hover:opacity-100" href="#">Delivery Information</a></li>
+<li><a class="text-stone-500 dark:text-stone-400 font-label text-sm hover:text-orange-700 dark:hover:text-orange-300 underline-offset-4 transition-all opacity-80 hover:opacity-100" href="#">Collection Points</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-headline font-bold text-sm uppercase tracking-widest mb-6 text-orange-900 dark:text-orange-200">Connect</h4>
+<div class="flex gap-4">
+<a class="w-8 h-8 flex items-center justify-center rounded-full bg-surface-container-high hover:bg-primary transition-colors hover:text-on-primary" href="#">
+<span class="material-symbols-outlined text-base">public</span>
+</a>
+<a class="w-8 h-8 flex items-center justify-center rounded-full bg-surface-container-high hover:bg-primary transition-colors hover:text-on-primary" href="#">
+<span class="material-symbols-outlined text-base">camera</span>
+</a>
+</div>
+<div class="mt-8 text-xs text-stone-500 font-label">
+                    © 2024 Earthbound Studio Zimbabwe. All rights reserved.
+                </div>
+</div>
+</div>
+</footer>
+</body></html>

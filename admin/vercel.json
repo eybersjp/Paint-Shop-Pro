@@ -1,0 +1,18 @@
+{
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist"
+      }
+    }
+  ],
+  "env": {
+    "VITE_SUPABASE_PROJECT_ID": "jemjmdpvomorpezcouhj",
+    "VITE_SUPABASE_PUBLISHABLE_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImplbWptZHB2b21vcnBlemNvdWhqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU0NzEyMDIsImV4cCI6MjA5MTA0NzIwMn0.LPC0AJm6gbREFlkIMmUa22Oa-rONydEZdMULFflzCoI",
+    "VITE_SUPABASE_URL": "https://jemjmdpvomorpezcouhj.supabase.co"
+  },
+  "installCommand": "npm install",
+  "buildCommand": "npm run build"
+}

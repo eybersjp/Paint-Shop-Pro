@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Heritage &amp; Sustainability | Earthbound Studio</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&amp;family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary": "#ffffff",
+                        "surface-container-highest": "#e4e2df",
+                        "surface": "#fbf9f6",
+                        "primary-fixed": "#ffdad2",
+                        "on-surface-variant": "#54433c",
+                        "on-primary-fixed": "#3d0700",
+                        "error": "#ba1a1a",
+                        "surface-tint": "#a23e26",
+                        "surface-container-high": "#eae8e5",
+                        "primary-fixed-dim": "#ffb4a3",
+                        "secondary-fixed-dim": "#a1d1b9",
+                        "error-container": "#ffdad6",
+                        "surface-dim": "#dbdad7",
+                        "secondary-container": "#baebd1",
+                        "outline-variant": "#dac1b8",
+                        "on-secondary-fixed-variant": "#214f3d",
+                        "inverse-surface": "#30312f",
+                        "background": "#fbf9f6",
+                        "tertiary": "#365177",
+                        "primary-container": "#ae472e",
+                        "tertiary-fixed": "#d5e3ff",
+                        "surface-variant": "#e4e2df",
+                        "surface-container-low": "#f5f3f0",
+                        "outline": "#87736b",
+                        "on-tertiary-container": "#dde8ff",
+                        "on-secondary-fixed": "#002115",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed": "#bcedd4",
+                        "on-tertiary-fixed": "#001c3b",
+                        "tertiary-fixed-dim": "#adc8f5",
+                        "tertiary-container": "#4f6991",
+                        "on-tertiary": "#ffffff",
+                        "inverse-on-surface": "#f2f0ed",
+                        "on-secondary-container": "#3e6b57",
+                        "on-primary-container": "#ffe1da",
+                        "surface-container": "#efeeeb",
+                        "surface-bright": "#fbf9f6",
+                        "secondary": "#3a6753",
+                        "on-tertiary-fixed-variant": "#2d486d",
+                        "primary": "#8e2f19",
+                        "on-surface": "#1b1c1a",
+                        "on-error": "#ffffff",
+                        "inverse-primary": "#ffb4a3",
+                        "on-error-container": "#93000a",
+                        "on-background": "#1b1c1a",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed-variant": "#822711"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .text-ink { color: #1b1c1a; }
+        .bg-ochre-gradient { background: linear-gradient(135deg, #8e2f19 0%, #ae472e 100%); }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-[#fbf9f6]/70 dark:bg-[#1b1c1a]/70 backdrop-blur-md">
+<div class="max-w-7xl mx-auto px-8 py-6 flex justify-between items-center">
+<a class="text-2xl font-bold tracking-tighter text-[#1b1c1a] dark:text-[#fbf9f6] font-['Space_Grotesk']" href="#">Earthbound Studio</a>
+<div class="hidden md:flex items-center gap-8 font-['Space_Grotesk'] tracking-tight">
+<a class="text-[#1b1c1a] dark:text-[#fbf9f6] opacity-80 hover:opacity-100 hover:text-[#8e2f19] transition-all duration-300" href="#">Shop</a>
+<a class="text-[#1b1c1a] dark:text-[#fbf9f6] opacity-80 hover:opacity-100 hover:text-[#8e2f19] transition-all duration-300" href="#">Visualizer</a>
+<a class="text-[#1b1c1a] dark:text-[#fbf9f6] opacity-80 hover:opacity-100 hover:text-[#8e2f19] transition-all duration-300" href="#">Gallery</a>
+<a class="text-[#1b1c1a] dark:text-[#fbf9f6] opacity-80 hover:opacity-100 hover:text-[#8e2f19] transition-all duration-300" href="#">Sustainability</a>
+<a class="text-[#8e2f19] dark:text-[#ae472e] border-b-2 border-[#8e2f19] dark:border-[#ae472e] pb-1" href="#">Heritage</a>
+</div>
+<div class="flex items-center gap-6">
+<button class="material-symbols-outlined text-[#1b1c1a] dark:text-[#fbf9f6] hover:text-[#8e2f19] transition-colors" data-icon="shopping_bag">shopping_bag</button>
+<button class="material-symbols-outlined text-[#1b1c1a] dark:text-[#fbf9f6] hover:text-[#8e2f19] transition-colors" data-icon="person">person</button>
+</div>
+</div>
+</nav>
+<main class="pt-24">
+<!-- Hero Section: Editorial Asymmetry -->
+<section class="relative min-height-[921px] flex items-center overflow-hidden px-8 py-20">
+<div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+<div class="lg:col-span-7 z-10">
+<span class="font-label text-sm uppercase tracking-[0.3em] text-primary mb-6 block">Our Origins</span>
+<h1 class="font-headline text-7xl md:text-9xl font-bold tracking-tighter leading-[0.85] mb-8">
+                        The Soil of <br/> <span class="text-primary italic">Harare</span>
+</h1>
+<p class="font-body text-xl text-on-surface-variant max-w-xl leading-relaxed">
+                        Born from the industrial pulse of Zimbabwe, Earthbound Studio bridges the raw power of manufacturing with the tactile beauty of architectural finish.
+                    </p>
+</div>
+<div class="lg:col-span-5 relative">
+<div class="aspect-[4/5] bg-surface-container-high overflow-hidden rounded-lg shadow-2xl transform lg:translate-y-12 rotate-2">
+<img alt="Zimbabwean Landscape Heritage" class="w-full h-full object-cover grayscale-[0.2] contrast-125" data-alt="Close up of weathered Zimbabwean rock formations with rich ochre and sienna textures under harsh midday sun" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvK3t97KOlD8HCFFlV9KS1G2yjx1hL0winaZesOEAeGeHnmUJSxFYrfefcjU33J1Aa9qJZmqKwtl2nHsiQJXbR7RSernxVoKSEnNUf94eh11tEbBv0XmYRD8NERmi8WkVccR1Bt8HbukAsQFmVCl0Wt9diAfUV1TxGNDs6sKcS4UAElSjOyF6QBSX7--mmqvwcxOiJGc2kIGiUjZ7MHEvh6hdYXoHfgNdvHL2lbFQGJm9WiTVz95NcEJq3CvDTc6pM9VnWpPimsg"/>
+</div>
+<div class="absolute -bottom-8 -left-8 aspect-square w-48 bg-ochre-gradient p-8 flex items-center justify-center rounded-lg shadow-xl z-20">
+<p class="font-headline text-on-primary font-bold text-4xl text-center leading-none">EST. 1984</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Industrial Roots: Bento Grid -->
+<section class="bg-surface-container-low py-24 px-8">
+<div class="max-w-7xl mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+<div class="max-w-2xl">
+<h2 class="font-headline text-5xl font-bold tracking-tight mb-6">Industrial Soul</h2>
+<p class="font-body text-lg text-on-surface-variant">Our factory in the heart of Harare isn't just a production line. It's a laboratory where Zimbabwean chemistry meets global architectural standards.</p>
+</div>
+<div class="flex gap-4">
+<div class="h-px w-24 bg-outline-variant/40 self-center"></div>
+<span class="font-label text-xs uppercase tracking-widest text-primary">Manufacturing Excellence</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+<div class="md:col-span-2 md:row-span-2 aspect-square md:aspect-auto bg-surface-container-highest rounded-lg overflow-hidden relative group">
+<img alt="Harare Factory" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Interior of a modern high-tech paint manufacturing facility in Zimbabwe with stainless steel vats and precision piping" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1FbSmQCem6sngYTFowT65mYsYKC9WgTe3qx7H2mEO8HuVvrpb51eAngSsHmUcw7j9UmqvmecHK-UCBKAQXQKbzCzerROW0BWzCoPnSgNKTPMR44lgZd96RCnD_k26yqfk9CRg2PabhmWiX086XiavGeuojA6YyKBVg120FxCJwekHXIHW-anaDl6MmZ3ngl8GjmIXq_SUfeBAUKJfrY4Jy3BHmcNnOnhyFj3Ul1_6h4gZet4OTFUZQyXZU2jK3hmOVwcAOBheZA"/>
+<div class="absolute bottom-0 left-0 p-8 bg-gradient-to-t from-on-surface/80 to-transparent w-full">
+<h3 class="font-headline text-surface text-2xl font-bold">Harare Industrial Hub</h3>
+<p class="font-body text-surface/80 text-sm">Where raw pigments are transformed into architectural liquid gold.</p>
+</div>
+</div>
+<div class="bg-surface-container-highest p-8 rounded-lg flex flex-col justify-between aspect-square">
+<span class="material-symbols-outlined text-4xl text-primary" data-icon="factory">factory</span>
+<div>
+<h4 class="font-headline text-xl font-bold mb-2">Purity First</h4>
+<p class="font-body text-sm text-on-surface-variant">Locally sourced minerals refined to surgical precision.</p>
+</div>
+</div>
+<div class="bg-primary text-on-primary p-8 rounded-lg flex flex-col justify-between aspect-square">
+<span class="material-symbols-outlined text-4xl" data-icon="precision_manufacturing">precision_manufacturing</span>
+<div>
+<h4 class="font-headline text-xl font-bold mb-2">Tech-Driven</h4>
+<p class="font-body text-sm text-on-primary/80">Automated blending systems ensure batch consistency across continents.</p>
+</div>
+</div>
+<div class="md:col-span-2 bg-surface-container-highest rounded-lg overflow-hidden relative aspect-video md:aspect-auto">
+<img alt="Quality Control" class="w-full h-full object-cover opacity-80" data-alt="Worker in protective gear checking color consistency of a deep ochre paint batch in a industrial setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBS48wImgeQCUcoYFF_LIEqELIt_Ga2fIJzzvK-hII_05WGVnw7Wwto9PjSsPe3j-4EuOk0krIJ3QLyosoZz9d4MRyG8RS1zFCjuRPYZ04QBiv6C1mCpKQteavOl-gj-lrSteD8tzwHtygCJbbBvg-TZALK3w5-RExG5tPNRVK9auEM8xjHrSEaQh3qmQKUHJ6kGBnl1clB9R2p1IIaAacuwffOC_Cys7A4AZFG-WHDVIGvnIw7D_iqhcWjKuSDYzYRl32oFjDYUw"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="bg-surface/90 backdrop-blur-sm p-6 rounded shadow-lg max-w-xs text-center">
+<p class="font-headline text-2xl font-bold text-primary">99.8%</p>
+<p class="font-body text-xs uppercase tracking-tighter text-on-surface-variant">Batch Precision Rate</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Sustainability: The Green Promise -->
+<section class="py-24 px-8 overflow-hidden">
+<div class="max-w-7xl mx-auto">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+<div class="relative order-2 lg:order-1">
+<div class="absolute -top-12 -left-12 w-64 h-64 bg-secondary-container/30 rounded-full blur-3xl"></div>
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-4">
+<div class="aspect-[3/4] bg-surface-container rounded-lg overflow-hidden">
+<img alt="Zimbabwean Nature" class="w-full h-full object-cover" data-alt="Lush green rolling hills of the Eastern Highlands of Zimbabwe at dawn with mist in the valleys" src="https://lh3.googleusercontent.com/aida-public/AB6AXuARf3PsSgU7axJguF3GdwkRSuS9kukORP5obi2WoBiXRGjD5EVhDImkdUGnwxNme80I_yOV0-8_7qfhlbYOb-jL-0ukGgHAyg_2sn8Y_fO_cVNbrhQweUpLQ9M73USgDkQMTVr-OOs1Ugp3-Wk_k9ea_XWihObiaif1-oNsBTrHk2i3bA8SpaMTfgKLakU-ptfayuaXobK1iWcjtuD5NrAwL8OszD2cvx52ATpiNnSWxQBNS2u5KYBO4sPJC3Esmg7Ms-mh8rXrkQ"/>
+</div>
+<div class="p-6 bg-secondary text-on-secondary rounded-lg">
+<p class="font-headline text-3xl font-bold">0%</p>
+<p class="font-label text-[10px] uppercase tracking-widest opacity-80">Added Formaldehyde</p>
+</div>
+</div>
+<div class="space-y-4 pt-12">
+<div class="p-6 bg-surface-container-high rounded-lg border-l-4 border-secondary">
+<span class="material-symbols-outlined text-secondary mb-4" data-icon="eco">eco</span>
+<p class="font-body text-sm font-semibold">Low-VOC Formulation</p>
+<p class="font-body text-xs text-on-surface-variant mt-2">Safer for your home, softer for our planet.</p>
+</div>
+<div class="aspect-[3/4] bg-surface-container rounded-lg overflow-hidden">
+<img alt="Eco-friendly" class="w-full h-full object-cover" data-alt="Close up of a green leaf with water droplets emphasizing purity and environmental health" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6ybmfJkNU__I-5cOkYSD2F3HY9ewMNh_vb5VqiGLC5TjjWLszIoZWLFOkn0ZXv736F3F9q1xSYZuj3t0ZTwTtYHYGmgQM0Rojnza7-MVTOW-x8YieG3v_75XvThArpQYP_v12nGtWZCXR_g3EXDBsdUM99z62ZxojnxJYJFcuqwlGYS8r6zZk0otsMBC10d-ICvtaQFebaFcN67vWyALo9GLkDZ5VcsX_icdaDHFdnv_rBZIzdIT_vt1OK3JGhRdgnde1TKtkBw"/>
+</div>
+</div>
+</div>
+</div>
+<div class="order-1 lg:order-2">
+<span class="font-label text-sm uppercase tracking-[0.3em] text-secondary mb-6 block">Earth Conscious</span>
+<h2 class="font-headline text-6xl font-bold tracking-tight mb-8">Architectural Beauty, <br/> <span class="text-secondary">Without the Impact.</span></h2>
+<div class="space-y-8">
+<p class="font-body text-lg text-on-surface-variant leading-relaxed">
+                                We believe that luxury shouldn't come at the cost of the environment. Our "Earthbound Promise" ensures that every litre of paint produced in our Harare facility meets the highest global environmental standards.
+                            </p>
+<ul class="space-y-4">
+<li class="flex items-center gap-4">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-body text-on-surface font-medium">Solar-powered manufacturing grid.</span>
+</li>
+<li class="flex items-center gap-4">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-body text-on-surface font-medium">Water-recycling filtration systems.</span>
+</li>
+<li class="flex items-center gap-4">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-body text-on-surface font-medium">100% Recyclable metal packaging.</span>
+</li>
+</ul>
+<div class="pt-8">
+<button class="px-8 py-4 bg-secondary text-on-secondary font-label text-xs uppercase tracking-widest rounded-md hover:bg-secondary/90 transition-all shadow-lg">Download Sustainability Report</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Technical Data: Minimalist Table -->
+<section class="bg-surface-container-high py-24 px-8">
+<div class="max-w-4xl mx-auto">
+<h2 class="font-headline text-3xl font-bold mb-12 text-center">Technical Specifications</h2>
+<div class="overflow-hidden bg-surface rounded-lg shadow-sm">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-lowest border-b border-outline-variant/20">
+<th class="p-6 font-label text-xs uppercase tracking-widest text-on-surface-variant">Metric</th>
+<th class="p-6 font-label text-xs uppercase tracking-widest text-on-surface-variant">Standard</th>
+<th class="p-6 font-label text-xs uppercase tracking-widest text-on-surface-variant">Result</th>
+</tr>
+</thead>
+<tbody class="font-body text-sm">
+<tr class="border-b border-outline-variant/10">
+<td class="p-6 font-semibold">VOC Content</td>
+<td class="p-6">ISO 11890-2</td>
+<td class="p-6 text-secondary font-bold">&lt; 1g/L</td>
+</tr>
+<tr class="border-b border-outline-variant/10">
+<td class="p-6 font-semibold">Scrub Resistance</td>
+<td class="p-6">ASTM D2486</td>
+<td class="p-6">Class 1</td>
+</tr>
+<tr class="border-b border-outline-variant/10">
+<td class="p-6 font-semibold">Drying Time</td>
+<td class="p-6">Touch Dry @ 25°C</td>
+<td class="p-6">45 Minutes</td>
+</tr>
+<tr>
+<td class="p-6 font-semibold">Finish Type</td>
+<td class="p-6">Reflectance Grade</td>
+<td class="p-6">Ultra-Matte / Satin</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- CTA: Global Heritage -->
+<section class="relative py-32 px-8 overflow-hidden bg-on-surface">
+<div class="absolute inset-0 opacity-20">
+<img alt="Harare Night" class="w-full h-full object-cover" data-alt="Wide aerial shot of Harare skyline at dusk with industrial lights beginning to flicker against a deep violet sky" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDn1t9RmZnkZwJ-ISUQeXwXDKtgsK7NXFmQcAFAttRaZMEry76XsX-hmLnSEM29KGC1OYUrrJ6a1ZJiM-QrDxtcj2huwnq0kwB5QDG4abcKhZtsy2-70IOuUaTeU5AJULkRUSNmsTBk2L9XyNC7Sf1U4Br5WknFGAiLpdhmhTJr8dyKbKOsgnzg3zmF0StLhpWo6Ayp1pXIN_9_5iEkix9YhK8REwzHXcarhgevd-Hz8Ut-t9Avwc2GtbOKCMNtdNBqYO7IGPt81A"/>
+</div>
+<div class="max-w-4xl mx-auto relative z-10 text-center">
+<h2 class="font-headline text-5xl md:text-7xl font-bold text-surface mb-8 tracking-tighter">Zimbabwean Soul. <br/> <span class="text-primary">Global Vision.</span></h2>
+<p class="font-body text-xl text-surface/70 mb-12 max-w-2xl mx-auto">From our studio in Harare to the most prestigious architectural projects worldwide.</p>
+<div class="flex flex-col sm:flex-row justify-center gap-6">
+<button class="px-10 py-5 bg-ochre-gradient text-on-primary font-label text-xs uppercase tracking-widest rounded-md hover:scale-105 transition-transform shadow-xl">Experience the Collection</button>
+<button class="px-10 py-5 border border-surface/30 text-surface font-label text-xs uppercase tracking-widest rounded-md hover:bg-surface hover:text-on-surface transition-all">Find a Retailer</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full border-t border-[#dac1b8]/20 bg-[#fbf9f6] dark:bg-[#1b1c1a]">
+<div class="max-w-7xl mx-auto px-8 py-12 flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex flex-col items-center md:items-start gap-2">
+<span class="text-lg font-black text-[#1b1c1a] dark:text-[#fbf9f6] font-['Space_Grotesk']">Earthbound Studio</span>
+<p class="text-[#1b1c1a]/60 dark:text-[#fbf9f6]/60 font-['Manrope'] text-xs uppercase tracking-widest">© 2024 Earthbound Studio Zimbabwe. Industrial Soul, Architectural Beauty.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-8 font-['Manrope'] text-sm uppercase tracking-widest">
+<a class="text-[#1b1c1a]/60 dark:text-[#fbf9f6]/60 hover:text-[#8e2f19] transition-colors" href="#">Terms of Service</a>
+<a class="text-[#1b1c1a]/60 dark:text-[#fbf9f6]/60 hover:text-[#8e2f19] transition-colors" href="#">Privacy Policy</a>
+<a class="text-[#1b1c1a]/60 dark:text-[#fbf9f6]/60 hover:text-[#8e2f19] transition-colors" href="#">Contact</a>
+<a class="text-[#1b1c1a]/60 dark:text-[#fbf9f6]/60 hover:text-[#8e2f19] transition-colors" href="#">Technical Data Sheets</a>
+</div>
+</div>
+</footer>
+</body></html>

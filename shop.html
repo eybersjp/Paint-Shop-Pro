@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Shop | Earthbound Studio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+          tailwind.config = {
+            darkMode: "class",
+            theme: {
+              extend: {
+                "colors": {
+                        "secondary-fixed": "#bcedd4",
+                        "secondary-container": "#baebd1",
+                        "surface-bright": "#fbf9f6",
+                        "inverse-on-surface": "#f2f0ed",
+                        "on-error-container": "#93000a",
+                        "on-primary": "#ffffff",
+                        "surface-container-high": "#eae8e5",
+                        "on-secondary-container": "#3e6b57",
+                        "surface-container-highest": "#e4e2df",
+                        "tertiary-fixed": "#d5e3ff",
+                        "surface-variant": "#e4e2df",
+                        "on-tertiary-container": "#dde8ff",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed": "#3d0700",
+                        "surface": "#fbf9f6",
+                        "on-secondary-fixed-variant": "#214f3d",
+                        "on-surface-variant": "#54433c",
+                        "inverse-primary": "#ffb4a3",
+                        "secondary": "#3a6753",
+                        "primary-fixed": "#ffdad2",
+                        "on-tertiary-fixed-variant": "#2d486d",
+                        "outline": "#87736b",
+                        "tertiary-fixed-dim": "#adc8f5",
+                        "error": "#ba1a1a",
+                        "on-tertiary": "#ffffff",
+                        "inverse-surface": "#30312f",
+                        "on-secondary-fixed": "#002115",
+                        "on-surface": "#1b1c1a",
+                        "on-background": "#1b1c1a",
+                        "on-secondary": "#ffffff",
+                        "surface-container-low": "#f5f3f0",
+                        "tertiary-container": "#4f6991",
+                        "on-primary-fixed-variant": "#822711",
+                        "on-tertiary-fixed": "#001c3b",
+                        "primary-fixed-dim": "#ffb4a3",
+                        "secondary-fixed-dim": "#a1d1b9",
+                        "surface-tint": "#a23e26",
+                        "tertiary": "#365177",
+                        "surface-dim": "#dbdad7",
+                        "primary-container": "#ae472e",
+                        "surface-container": "#efeeeb",
+                        "primary": "#8e2f19",
+                        "outline-variant": "#dac1b8",
+                        "surface-container-lowest": "#ffffff",
+                        "background": "#fbf9f6",
+                        "on-primary-container": "#ffe1da",
+                        "error-container": "#ffdad6"
+                },
+                "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                },
+                "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                }
+              },
+            }
+          }
+    </script>
+    <style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .badge { position: absolute; top: -5px; right: -5px; background: #8e2f19; color: white; border-radius: 50%; width: 18px; height: 18px; font-size: 10px; display: flex; align-items: center; justify-content: center; font-weight: bold; border: 2px solid white; }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-primary-fixed selection:text-on-primary-fixed">
+    <nav class="fixed top-0 w-full z-50 bg-stone-50/70 dark:bg-stone-900/70 backdrop-blur-md shadow-sm transition-colors duration-200">
+        <div class="flex justify-between items-center px-8 py-4 max-w-full mx-auto">
+            <div class="flex items-center gap-12">
+                <a class="text-2xl font-bold text-orange-900 dark:text-orange-100 font-headline tracking-tight" href="index.html">Earthbound Studio</a>
+                <div class="hidden md:flex items-center gap-8 font-label">
+                    <a class="text-orange-800 dark:text-orange-300 border-b-2 border-orange-800 pb-1" href="shop.html">Shop</a>
+                    <a class="text-stone-600 hover:text-stone-900" href="visualizer.html">Visualizer</a>
+                    <a class="text-stone-600 hover:text-stone-900" href="collection.html">Collections</a>
+                </div>
+            </div>
+            <div class="flex items-center gap-6">
+                <button class="relative p-2 hover:bg-stone-100 rounded-full transition-colors" onclick="location.href='checkout.html'">
+                    <span class="material-symbols-outlined text-orange-900" id="cart-icon">shopping_cart</span>
+                    <span id="cart-count" class="badge hidden">0</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-24 pb-16 px-8 max-w-screen-2xl mx-auto">
+        <header class="mb-12">
+            <h1 class="text-6xl md:text-8xl font-headline font-bold tracking-tighter text-on-surface mb-2">All Paints</h1>
+            <p class="text-lg text-on-surface-variant max-w-xl font-light">Explore our curated range of artisanal finishes. Architectural quality, earthbound soul.</p>
+        </header>
+
+        <div class="flex flex-col lg:flex-row gap-12">
+            <aside class="w-full lg:w-72 flex-shrink-0">
+                <div class="sticky top-24 space-y-10">
+                    <div>
+                        <h3 class="text-sm font-headline font-bold uppercase tracking-[0.2em] mb-6 text-primary">Paint Type</h3>
+                        <ul class="space-y-3 font-label text-sm" id="type-filters">
+                            <li class="flex items-center justify-between group cursor-pointer" onclick="filterByType('Architectural Matte')">
+                                <span class="group-hover:text-primary transition-colors">Architectural Matte</span>
+                            </li>
+                            <li class="flex items-center justify-between group cursor-pointer" onclick="filterByType('Mineral Limewash')">
+                                <span class="group-hover:text-primary transition-colors">Mineral Limewash</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </aside>
+
+            <section class="flex-grow">
+                <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-8 gap-y-16" id="product-grid">
+                    <!-- Products dynamically loaded -->
+                    <div class="col-span-full py-20 text-center animate-pulse text-outline">Gathering mineral pigments...</div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="w-full border-t border-stone-200 bg-stone-100 mt-12 py-16 px-8">
+        <div class="max-w-screen-2xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 text-sm text-stone-500">
+            <div class="space-y-4">
+                <h2 class="text-lg font-bold text-orange-950 font-headline uppercase tracking-widest">Earthbound Studio</h2>
+                <p>Refining the landscape for the modern world.</p>
+            </div>
+            <div>
+                <h4 class="font-bold text-orange-900 mb-6 uppercase tracking-widest">Company</h4>
+                <ul class="space-y-3"><li>Sustainability</li><li>Terms</li></ul>
+            </div>
+            <div class="mt-8 text-xs col-span-full border-t border-stone-200 pt-8">
+                © 2024 Earthbound Studio Zimbabwe.
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        const SUPABASE_URL = "https://jemjmdpvomorpezcouhj.supabase.co";
+        const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImplbWptZHB2b21vcnBlemNvdWhqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU0NzEyMDIsImV4cCI6MjA5MTA0NzIwMn0.LPC0AJm6gbREFlkIMmUa22Oa-rONydEZdMULFflzCoI";
+        const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+        let allProducts = [];
+
+        async function fetchProducts() {
+            const grid = document.getElementById('product-grid');
+            grid.innerHTML = `
+                <div class="col-span-full py-20 flex flex-col items-center justify-center opacity-50">
+                    <div class="w-12 h-12 border-2 border-primary border-t-transparent rounded-full animate-spin mb-4"></div>
+                    <p class="font-mono uppercase tracking-widest text-[10px]">Accessing Earthbound Vault...</p>
+                </div>
+            `;
+
+            try {
+                const { data, error } = await _supabase.from('products').select('*').eq('is_active', true);
+                if (error) throw error;
+                
+                allProducts = data || [];
+
+                // FALLBACK: If DB is empty, use mock data for demo purposes
+                if (allProducts.length === 0) {
+                    console.warn("Supabase products table is empty. Using Earthbound Signature Collection mocks.");
+                    allProducts = [
+                        {
+                            id: 'mock-1',
+                            name: 'Ochre Earth - Architectural Matte',
+                            price_minor: 4500,
+                            stock_level: 25,
+                            brand: 'Earthbound Studio',
+                            finish: 'MATT',
+                            color_code: '#B87333',
+                            image_url: 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=800'
+                        },
+                        {
+                            id: 'mock-2',
+                            name: 'Forest Canopy - High Sheen',
+                            price_minor: 5200,
+                            stock_level: 8,
+                            brand: 'Earthbound Studio',
+                            finish: 'SHEEN',
+                            color_code: '#2D5A27',
+                            image_url: 'https://images.unsplash.com/photo-1595428774223-ef52624120d2?q=80&w=800'
+                        },
+                        {
+                            id: 'mock-3',
+                            name: 'Savanna Gold - Textured Finish',
+                            price_minor: 6800,
+                            stock_level: 50,
+                            brand: 'Earthbound Studio',
+                            finish: 'TEXTURED',
+                            color_code: '#DAA520',
+                            image_url: 'https://images.unsplash.com/photo-1615529328331-f8917597711f?q=80&w=800'
+                        },
+                        {
+                            id: 'mock-4',
+                            name: 'Cobalt Night - Signature Gloss',
+                            price_minor: 7500,
+                            stock_level: 12,
+                            brand: 'Earthbound Studio',
+                            finish: 'GLOSS',
+                            color_code: '#0047AB',
+                            image_url: 'https://images.unsplash.com/photo-1513161455079-7dc1de15ef3e?q=80&w=800'
+                        }
+                    ];
+                }
+                renderProducts(allProducts);
+            } catch (err) {
+                console.error('Error fetching vault data:', err);
+                grid.innerHTML = `
+                    <div class="col-span-full py-20 text-center">
+                        <p class="text-red-500 font-mono">DATABASE CONNECTION INTERRUPTED</p>
+                        <p class="text-sm opacity-50 mt-2">${err.message}</p>
+                    </div>
+                `;
+            }
+        }
+
+        function renderProducts(products) {
+            const grid = document.getElementById('product-grid');
+            if (!grid) return;
+            
+            if (products.length === 0) {
+                grid.innerHTML = '<div class="col-span-full py-20 text-center text-outline">No matches found for your filter.</div>';
+                return;
+            }
+
+            grid.innerHTML = products.map(p => `
+                <div class="group">
+                    <div class="relative aspect-[4/5] bg-surface-container-low overflow-hidden mb-6">
+                        <img src="${p.image_url || 'https://images.unsplash.com/photo-1562648181-4cd88bb8234c?q=80&w=800'}" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-700">
+                        <button onclick="addToCart('${p.id}', '${p.name}', ${p.price_minor})" class="absolute bottom-4 right-4 bg-primary text-on-primary px-6 py-3 font-label text-xs tracking-widest uppercase rounded-lg opacity-0 group-hover:opacity-100 transition-all flex items-center gap-2">
+                            <span class="material-symbols-outlined text-sm">add_shopping_cart</span>
+                            Add to Cart
+                        </button>
+                        ${p.stock_level < 10 ? `<div class="absolute top-4 right-4 bg-red-600 text-white px-2 py-1 text-[10px] font-bold rounded">LOW STOCK: ${p.stock_level}</div>` : ''}
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-xl font-headline font-semibold text-on-surface leading-tight">${p.name}</h3>
+                            <span class="text-lg font-headline font-light">$${(p.price_minor/100).toFixed(2)}</span>
+                        </div>
+                        <p class="text-sm text-on-surface-variant font-light">${p.finish || 'Matte'} • ${p.brand || 'Artisanal'}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filterByType(type) {
+            const filtered = allProducts.filter(p => p.finish === type || p.name.includes(type));
+            renderProducts(filtered);
+        }
+
+        function addToCart(id, name, price) {
+            let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+            const existing = cart.find(item => item.id === id);
+            if (existing) {
+                existing.qty++;
+            } else {
+                cart.push({ id, name, price, qty: 1 });
+            }
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartUI();
+            
+            // Subtle toast
+            const toast = document.createElement('div');
+            toast.className = 'fixed bottom-8 right-8 bg-inverse-surface text-inverse-on-surface px-6 py-4 rounded-lg shadow-2xl z-[100] font-label text-sm flex items-center gap-3 animate-bounce';
+            toast.innerHTML = `<span class="material-symbols-outlined text-primary">check_circle</span> Added ${name} to cart`;
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 3000);
+        }
+
+        function updateCartUI() {
+            const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+            const count = cart.reduce((s, i) => s + i.qty, 0);
+            const badge = document.getElementById('cart-count');
+            if (count > 0) {
+                badge.textContent = count;
+                badge.classList.remove('hidden');
+            } else {
+                badge.classList.add('hidden');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchProducts();
+            updateCartUI();
+        });
+    </script>
+</body>
+</html>
